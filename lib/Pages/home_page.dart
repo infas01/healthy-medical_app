@@ -19,7 +19,7 @@ class Home_Page extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/Healthy_Logo_R.png',
+                'images/Healthy_Logo_R.png',
                 height: deviceHeight * 0.4,
                 width: deviceWidth * 0.4,
               ),

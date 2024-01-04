@@ -3,16 +3,15 @@ import 'dart:async';
 import './Pages/login_page.dart';
 import './Pages/Home_Page.dart';
 
-void main() => runApp(healthy());
+void main() => runApp(const healthy());
 
+// ignore: camel_case_types
 class healthy extends StatelessWidget {
   const healthy({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var deviceWidth = MediaQuery.of(context).size.width;
-    var deviceHeight = MediaQuery.of(context).size.height;
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Healthy',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
@@ -22,6 +21,8 @@ class healthy extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -32,16 +33,16 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Timer(
-      Duration(seconds: 2),
+      const Duration(seconds: 2),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Login_Page()),
+        MaterialPageRoute(builder: (context) => const Login_Page()),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Home_Page();
+    return const Home_Page();
   }
 }

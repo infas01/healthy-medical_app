@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'history_page.dart';
 import './apointment_screen.dart';
+import '../MedReminder/medreminder.dart';
 
 class SubHomePage extends StatelessWidget {
   const SubHomePage({Key? key});
@@ -12,8 +13,8 @@ class SubHomePage extends StatelessWidget {
     _deviceWidth = MediaQuery.of(context).size.width;
     final drawerHeader = Container(
       child: UserAccountsDrawerHeader(
-        accountName: Text('Infas'),
-        accountEmail: Text('infas1002@gmail.com'),
+        accountName: const Text('Infas'),
+        accountEmail: const Text('infas1002@gmail.com'),
         currentAccountPicture: const CircleAvatar(
           child: FlutterLogo(
             size: 40.0,
@@ -28,14 +29,14 @@ class SubHomePage extends StatelessWidget {
       children: [
         drawerHeader,
         ListTile(
-          title: Text('Settings'),
+          title: const Text('Settings'),
           leading: const Icon(Icons.settings),
           onTap: () {
             Navigator.pop(context);
           },
         ),
         ListTile(
-          title: Text('About us'),
+          title: const Text('About us'),
           leading: const Icon(Icons.details),
           onTap: () {
             Navigator.pop(context);
@@ -48,12 +49,6 @@ class SubHomePage extends StatelessWidget {
       'https://via.placeholder.com/120x120.png?text=Image+1',
       'https://via.placeholder.com/120x120.png?text=Image+2',
       'https://via.placeholder.com/120x120.png?text=Image+3',
-    ];
-    List imgs = [
-      "doctor1.jpg",
-      "doctor2.jpg",
-      "doctor3.jpg",
-      "doctor4.jpg",
     ];
 
     final imageList = ListView.builder(
@@ -72,7 +67,7 @@ class SubHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[700],
-        title: Text('Hello Infas'),
+        title: const Text('Hello Infas'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -81,7 +76,7 @@ class SubHomePage extends StatelessWidget {
               height: _deviceHeight * 0.25,
               child: imageList,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
@@ -98,7 +93,7 @@ class SubHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HistoryPage(),
+                                builder: (context) => const HistoryPage(),
                               ),
                             );
                           },
@@ -117,7 +112,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -137,13 +132,13 @@ class SubHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AppointmentScreen(),
+                                builder: (context) =>const Medreminder(),
                               ),
                             );
                           },
@@ -162,7 +157,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -185,7 +180,7 @@ class SubHomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -217,7 +212,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -237,7 +232,7 @@ class SubHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -262,7 +257,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(

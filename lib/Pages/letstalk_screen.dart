@@ -25,7 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black87,
-        title: Text(
+        title: const Text(
           'Let\'s Talk',
           style: TextStyle(
             fontWeight: FontWeight.w600,
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             color: Colors.white,
             onPressed: () {
               // write the search function
@@ -59,7 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
               color: Colors.grey[500],
             ),
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: _buildTextComposer(),
@@ -72,9 +72,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildTextComposer() {
     var deviceHeight;
-    var deviceWidth;
 
-    deviceWidth = MediaQuery.of(context).size.width;
     deviceHeight = MediaQuery.of(context).size.height;
     return IconTheme(
       data: IconThemeData(
@@ -83,7 +81,7 @@ class _ChatScreenState extends State<ChatScreen> {
       child: Container(
         height: deviceHeight * 0.08,
         //color: Colors.yellow,
-        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: <Widget>[
             Flexible(
@@ -97,10 +95,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     onChanged: (text) {
                       setState(() {});
                     },
-                    decoration: InputDecoration.collapsed(
+                    decoration: const InputDecoration.collapsed(
                       hintText: 'Send a message',
                     ),
-                    style: TextStyle(fontSize: 15.0),
+                    style: const TextStyle(fontSize: 15.0),
                     maxLines: null,
                   ),
                 ),
@@ -112,14 +110,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     ? () => _handleSubmitted(_textController.text)
                     : null,
                 child: Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     color: _textController.text.isNotEmpty
                         ? Colors.green[700]
                         : Colors.grey,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.send,
                     color: Colors.white,
                   ),
@@ -140,24 +138,22 @@ class ChatMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var deviceHeight;
     var deviceWidth;
 
     deviceWidth = MediaQuery.of(context).size.width;
-    deviceHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         Container(
           //color: Colors.lightBlue,
-          margin: EdgeInsets.symmetric(vertical: 10.0),
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
                 //color: Colors.amber,
                 width: deviceWidth * 0.10,
-                margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                child: CircleAvatar(
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: const CircleAvatar(
                   backgroundColor: Colors.amber,
                   //Here we want to set the set the profile picture.
                   child: Text('Inf'),
@@ -165,7 +161,7 @@ class ChatMessage extends StatelessWidget {
               ),
               Container(
                 width: deviceWidth * 0.75,
-                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
@@ -174,19 +170,19 @@ class ChatMessage extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
                 child: Expanded(
                   child: Container(
                     //color: Colors.lightGreen,
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         //Here we want to set the username
-                        Text(
+                        const Text(
                           'Infas',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -195,10 +191,10 @@ class ChatMessage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10.0, right: 15.0),
+                          margin: const EdgeInsets.only(top: 10.0, right: 15.0),
                           child: Text(
                             text,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15.0,
                             ),
                           ),
@@ -213,15 +209,15 @@ class ChatMessage extends StatelessWidget {
         ),
         Container(
           //color: Colors.lightBlue,
-          margin: EdgeInsets.symmetric(vertical: 10.0),
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
                 //color: Colors.amber,
                 width: deviceWidth * 0.10,
-                margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                child: CircleAvatar(
+                margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                child: const CircleAvatar(
                   backgroundColor: Colors.blue,
                   //Here we want to set the set the profile picture.
                   child: Text('Tal'),
@@ -229,7 +225,7 @@ class ChatMessage extends StatelessWidget {
               ),
               Container(
                 width: deviceWidth * 0.75,
-                margin: EdgeInsets.symmetric(horizontal: 8.0),
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(10.0),
@@ -238,19 +234,19 @@ class ChatMessage extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 3),
+                      offset: const Offset(0, 3),
                     ),
                   ],
                 ),
                 child: Expanded(
                   child: Container(
                     //color: Colors.lightGreen,
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         //Here we want to set the username
-                        Text(
+                        const Text(
                           'Talky',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -259,8 +255,8 @@ class ChatMessage extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10.0, right: 15.0),
-                          child: Text(
+                          margin: const EdgeInsets.only(top: 10.0, right: 15.0),
+                          child: const Text(
                             //Here we want to connect the chatgpt
                             'Wait for the response',
                             style: TextStyle(

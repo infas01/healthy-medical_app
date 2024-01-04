@@ -4,7 +4,6 @@ import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:flutter/material.dart';
 import './signup_page.dart';
-import './welcome_screen.dart';
 
 class Login_Page extends StatefulWidget {
   const Login_Page({super.key});
@@ -63,7 +62,7 @@ class _Login_PageState extends State<Login_Page> {
                                             child: Column(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       25.0, 0.0, 20.0, 0.0),
                                                   child: Text(
                                                     options[index],
@@ -78,7 +77,7 @@ class _Login_PageState extends State<Login_Page> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 2.5,
                                                 ),
                                                 selectedIndex == index
@@ -110,7 +109,7 @@ class _Login_PageState extends State<Login_Page> {
                                     1,
                                     (adjustWidth),
                                     child: Container(
-                                      margin: EdgeInsets.only(top: 5),
+                                      margin: const EdgeInsets.only(top: 5),
                                       width: 70,
                                       height: 100,
                                       decoration: BoxDecoration(
@@ -120,7 +119,7 @@ class _Login_PageState extends State<Login_Page> {
                                       child: Column(
                                         children: [
                                           Image.asset(
-                                            'assets/Healthy_Logo_R.png',
+                                            'images/Healthy_Logo_R.png',
                                           ),
                                         ],
                                       ),
@@ -133,7 +132,7 @@ class _Login_PageState extends State<Login_Page> {
                               ),
                               Container(
                                 //color: Colors.yellow,
-                                padding: EdgeInsets.only(left: 25),
+                                padding: const EdgeInsets.only(left: 25),
                                 width: deviceWidth,
                                 child: TopAnime(
                                   1,
@@ -162,7 +161,7 @@ class _Login_PageState extends State<Login_Page> {
                                   children: [
                                     Container(
                                       padding:
-                                          EdgeInsets.only(left: 25, right: 25),
+                                          const EdgeInsets.only(left: 25, right: 25),
                                       //color: Colors.red[200],
                                       width: deviceWidth,
                                       height: 230.0 + adjustHeight,
@@ -174,7 +173,7 @@ class _Login_PageState extends State<Login_Page> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            TextField(
+                                            const TextField(
                                               cursorColor: Colors.black,
                                               style: TextStyle(
                                                   color: Colors.black),
@@ -187,7 +186,7 @@ class _Login_PageState extends State<Login_Page> {
                                             ),
                                             TextField(
                                                 cursorColor: Colors.black,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.black),
                                                 showCursor: true,
                                                 decoration:
@@ -243,7 +242,7 @@ class _Login_PageState extends State<Login_Page> {
                                                               10)),
                                                   width: deviceWidth * 0.35,
                                                   height: 50,
-                                                  child: Row(
+                                                  child: const Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .center,
@@ -286,7 +285,7 @@ class _Login_PageState extends State<Login_Page> {
                                 child: Container(
                                   //color: Colors.red,
                                   alignment: Alignment.centerLeft,
-                                  margin: EdgeInsets.only(left: 25, bottom: 10),
+                                  margin: const EdgeInsets.only(left: 25, bottom: 10),
                                   height: deviceHeight * 0.05,
                                   child: Text(
                                     "Forgot Password?",
@@ -297,11 +296,11 @@ class _Login_PageState extends State<Login_Page> {
                                   ),
                                 ),
                               )
-                            : Signup_Page()
+                            : const Signup_Page()
                       ],
                     ),
                   )
-                : Signup_Page()),
+                : const Signup_Page()),
       ),
     );
   }

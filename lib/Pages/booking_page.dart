@@ -7,7 +7,7 @@ class BookingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: Text('Booking'),
+      child: const Text('Booking'),
     );
   }
 }
