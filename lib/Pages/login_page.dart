@@ -165,7 +165,7 @@ class _Login_PageState extends State<Login_Page> {
                                           EdgeInsets.only(left: 25, right: 25),
                                       //color: Colors.red[200],
                                       width: deviceWidth,
-                                      height: 230.0 + adjustHeight,
+                                      height: 250.0 + adjustHeight,
                                       child: TopAnime(
                                         1,
                                         5,
@@ -224,7 +224,7 @@ class _Login_PageState extends State<Login_Page> {
                                             //   ),
                                             // )
                                             Container(
-                                              //color: Colors.grey[300],
+                                              color: Colors.grey[300],
                                               alignment: Alignment.center,
                                               child: GestureDetector(
                                                 onTap: () {
@@ -242,7 +242,7 @@ class _Login_PageState extends State<Login_Page> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   width: deviceWidth * 0.35,
-                                                  height: 50,
+                                                  height: 40,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -254,15 +254,6 @@ class _Login_PageState extends State<Login_Page> {
                                                             color: Colors.white,
                                                             fontSize: 20.0),
                                                       ),
-                                                      // Padding(
-                                                      //     padding:
-                                                      //         EdgeInsets.only(
-                                                      //             right: 10)),
-                                                      // Icon(
-                                                      //   Icons.arrow_forward,
-                                                      //   size: 20.0,
-                                                      //   color: Colors.white,
-                                                      // ),
                                                     ],
                                                   ),
                                                 ),
@@ -284,9 +275,10 @@ class _Login_PageState extends State<Login_Page> {
                                 5,
                                 curve: Curves.fastOutSlowIn,
                                 child: Container(
-                                  //color: Colors.red,
+                                  color: Colors.red,
                                   alignment: Alignment.centerLeft,
-                                  margin: EdgeInsets.only(left: 25, bottom: 10),
+                                  margin: EdgeInsets.only(
+                                      top: 10, left: 25, bottom: 10),
                                   height: deviceHeight * 0.05,
                                   child: Text(
                                     "Forgot Password?",

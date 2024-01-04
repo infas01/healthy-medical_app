@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/Pages/booking_page.dart';
 import 'history_page.dart';
 import './apointment_screen.dart';
 
@@ -11,6 +12,7 @@ class SubHomePage extends StatelessWidget {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     final drawerHeader = Container(
+      //color: Colors.yellow,
       child: UserAccountsDrawerHeader(
         accountName: Text('Infas'),
         accountEmail: Text('infas1002@gmail.com'),
@@ -143,7 +145,7 @@ class SubHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AppointmentScreen(),
+                                builder: (context) => BookingPage(),
                               ),
                             );
                           },
@@ -198,7 +200,7 @@ class SubHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AppointmentScreen(),
+                                builder: (context) => BookingPage(),
                               ),
                             );
                           },
@@ -243,7 +245,7 @@ class SubHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AppointmentScreen(),
+                                builder: (context) => BookingPage(),
                               ),
                             );
                           },

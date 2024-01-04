@@ -159,7 +159,7 @@ class _Signup_PageState extends State<Signup_Page> {
                             ),
                             Container(
                               //padding: EdgeInsets.fromLTRB(2, 0, 25, 0),
-                              //color: Colors.blue,
+                              color: Colors.blue,
                               child: Column(
                                 children: [
                                   Container(
@@ -167,7 +167,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                         EdgeInsets.only(left: 25, right: 25),
                                     //color: Colors.red[200],
                                     width: deviceWidth,
-                                    height: 330.0 + adjustHeight,
+                                    height: 350.0 + adjustHeight,
                                     child: TopAnime(
                                       1,
                                       5,
