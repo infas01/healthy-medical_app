@@ -4,7 +4,6 @@ import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:flutter/material.dart';
 import './signup_page.dart';
-import './welcome_screen.dart';
 
 class Login_Page extends StatefulWidget {
   const Login_Page({super.key});

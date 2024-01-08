@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:healthy/Pages/booking_page.dart';
 import 'package:healthy/Pages/letstalk_screen.dart';
 import 'package:healthy/Pages/sub_home_page.dart';
-import '../Pages/schedule_screen.dart';
 
 class NavBarRoots extends StatefulWidget {
   @override
