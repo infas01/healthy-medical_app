@@ -1,10 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:healthy/Pages/booking_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'history_page.dart';
+import './apointment_screen.dart';
+import '../MedReminder/medreminder.dart';
 
-class SubHomePage extends StatelessWidget {
-  const SubHomePage({Key? key});
 
+class SubHomePage extends StatefulWidget {
+  const SubHomePage({super.key});
+
+  @override
+  State<SubHomePage> createState() => _SubHomePageState();
+}
+
+class _SubHomePageState extends State<SubHomePage> {
+
+  late SharedPreferences prefs;
+  String? id;
+  String? name;
+  String? email;
+  String? password;
+   late Future<void> _preferencesFuture;
+
+  @override
+  void initState() {
+    super.initState();
+     _loadPreferences();
+  }
+
+  Future<void> _loadPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+
+     setState(() {
+      id = prefs.getString('id');
+      name = prefs.getString('name');
+      email = prefs.getString('email');
+      password = prefs.getString('password');
+    });
+
+    // Do something with the retrieved values if needed
+    print('Stored values: id=$id, name=$name, email=$email, password=$password');
+  }
+
+
+  
   @override
   Widget build(BuildContext context) {
     var _deviceHeight, _deviceWidth;
@@ -13,8 +51,8 @@ class SubHomePage extends StatelessWidget {
     final drawerHeader = Container(
       //color: Colors.yellow,
       child: UserAccountsDrawerHeader(
-        accountName: Text('Infas'),
-        accountEmail: Text('infas1002@gmail.com'),
+        accountName:  Text('$name'),
+        accountEmail: Text('$email'),
         currentAccountPicture: const CircleAvatar(
           child: FlutterLogo(
             size: 40.0,
@@ -29,14 +67,14 @@ class SubHomePage extends StatelessWidget {
       children: [
         drawerHeader,
         ListTile(
-          title: Text('Settings'),
+          title: const Text('Settings'),
           leading: const Icon(Icons.settings),
           onTap: () {
             Navigator.pop(context);
           },
         ),
         ListTile(
-          title: Text('About us'),
+          title: const Text('About us'),
           leading: const Icon(Icons.details),
           onTap: () {
             Navigator.pop(context);
@@ -49,12 +87,6 @@ class SubHomePage extends StatelessWidget {
       'https://via.placeholder.com/120x120.png?text=Image+1',
       'https://via.placeholder.com/120x120.png?text=Image+2',
       'https://via.placeholder.com/120x120.png?text=Image+3',
-    ];
-    List imgs = [
-      "doctor1.jpg",
-      "doctor2.jpg",
-      "doctor3.jpg",
-      "doctor4.jpg",
     ];
 
     final imageList = ListView.builder(
@@ -73,7 +105,7 @@ class SubHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[700],
-        title: Text('Hello Infas'),
+        title:  Text('Hello $name'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -82,7 +114,7 @@ class SubHomePage extends StatelessWidget {
               height: _deviceHeight * 0.25,
               child: imageList,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
@@ -99,7 +131,7 @@ class SubHomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => HistoryPage(),
+                                builder: (context) => const HistoryPage(),
                               ),
                             );
                           },
@@ -118,7 +150,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -138,13 +170,13 @@ class SubHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => BookingPage(),
+                                builder: (context) =>const Medreminder(),
                               ),
                             );
                           },
@@ -163,7 +195,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -186,7 +218,7 @@ class SubHomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -218,7 +250,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -238,7 +270,7 @@ class SubHomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
                             Navigator.push(
@@ -263,7 +295,7 @@ class SubHomePage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: const Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Icon(
@@ -299,3 +331,13 @@ class SubHomePage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import '../Animation/animation.dart';
 import '../constant.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import './login_page.dart';
 
@@ -11,6 +14,13 @@ class Signup_Page extends StatefulWidget {
 }
 
 class _Signup_PageState extends State<Signup_Page> {
+
+   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
+ 
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 1;
   @override
@@ -60,7 +70,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.fromLTRB(
+                                                padding: const EdgeInsets.fromLTRB(
                                                     25.0, 0.0, 20.0, 0.0),
                                                 child: Text(
                                                   options[index],
@@ -74,7 +84,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 2.5,
                                               ),
                                               selectedIndex == index
@@ -104,7 +114,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                   1,
                                   (adjustWidth),
                                   child: Container(
-                                    margin: EdgeInsets.only(top: 5),
+                                    margin: const EdgeInsets.only(top: 5),
                                     width: 70,
                                     height: 100,
                                     decoration: BoxDecoration(
@@ -114,7 +124,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                     child: Column(
                                       children: [
                                         Image.asset(
-                                          'assets/Healthy_Logo_R.png',
+                                          'images/Healthy_Logo_R.png',
                                         ),
                                       ],
                                     ),
@@ -127,7 +137,7 @@ class _Signup_PageState extends State<Signup_Page> {
                             ),
                             Container(
                               //color: Colors.yellow,
-                              padding: EdgeInsets.only(left: 25),
+                              padding: const EdgeInsets.only(left: 25),
                               width: deviceWidth,
                               child: TopAnime(
                                 1,
@@ -192,116 +202,224 @@ class _Signup_PageState extends State<Signup_Page> {
                                           ),
                                           TextField(
                                             cursorColor: Colors.black,
-                                            style:
-                                                TextStyle(color: Colors.black),
+                                            style: const TextStyle(
+                                                color: Colors.black),
                                             showCursor: true,
                                             decoration:
-                                                textFiledInputDecoration,
-                                          ),
-                                          SizedBox(
-                                            height: 10.0 + adjustHeight,
-                                          ),
-                                          TextField(
-                                              cursorColor: Colors.black,
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                              showCursor: true,
-                                              decoration:
-                                                  textFiledInputDecoration
-                                                      .copyWith(
-                                                          labelText:
-                                                              "Password")),
-                                          SizedBox(
-                                            height: 15.0 + adjustHeight,
-                                          ),
-                                          // TopAnime(
-                                          //   1,
-                                          //   5,
-                                          //   child: Row(
-                                          //     children: [
-                                          //       // IconButton(
-                                          //       //   // icon: FaIcon(
-                                          //       //   //   FontAwesomeIcons.facebookF,
-                                          //       //   //   size: 30,
-                                          //       //   // ),
-                                          //       //   onPressed: () {},
-                                          //       // ),
-                                          //       SizedBox(
-                                          //         width: 15,
-                                          //       ),
-                                          //       // IconButton(
-                                          //       //   // icon: FaIcon(
-                                          //       //   //     FontAwesomeIcons
-                                          //       //   //         .googlePlusG,
-                                          //       //   //     size: 35),
-                                          //       //   onPressed: () {},
-                                          //       // ),
-                                          //     ],
-                                          //   ),
-                                          // )
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Username")),
 
-                                          Container(
-                                            //color: Colors.grey[300],
-                                            alignment: Alignment.center,
-                                            margin: EdgeInsets.only(top: 10),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Login_Page(),
-                                                    ));
-                                              },
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        Colors.lightBlue[900],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                width: deviceWidth * 0.60,
-                                                height: 50,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      'Create an Account',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 20.0),
-                                                    ),
-                                                    // Padding(
-                                                    //     padding:
-                                                    //         EdgeInsets.only(
-                                                    //             right: 10)),
-                                                    // Icon(
-                                                    //   Icons.arrow_forward,
-                                                    //   size: 20.0,
-                                                    //   color: Colors.white,
-                                                    // ),
-                                                  ],
-                                                ),
+                                        SizedBox(
+                                          height: 10.0 + adjustHeight,
+                                        ),
+                                         TextField(
+                                          controller: _emailController,
+                                          cursorColor: Colors.black,
+                                          style:
+                                              const TextStyle(color: Colors.black),
+                                          showCursor: true,
+                                          decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Email")),
+                    
+                                        SizedBox(
+                                          height: 10.0 + adjustHeight,
+                                        ),
+                                        TextField(
+                                          controller: _passwordController,
+                                            cursorColor: Colors.black,
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            showCursor: true,
+                                            decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Password")),
+                                        SizedBox(
+                                          height: 15.0 + adjustHeight,
+                                        ),
+                                        TextField(
+                                          controller: _ageController,
+                                            cursorColor: Colors.black,
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            showCursor: true,
+                                            decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Age")),
+                                        SizedBox(
+                                          height: 15.0 + adjustHeight,
+                                        ),
+                                        // TopAnime(
+                                        //   1,
+                                        //   5,
+                                        //   child: Row(
+                                        //     children: [
+                                        //       // IconButton(
+                                        //       //   // icon: FaIcon(
+                                        //       //   //   FontAwesomeIcons.facebookF,
+                                        //       //   //   size: 30,
+                                        //       //   // ),
+                                        //       //   onPressed: () {},
+                                        //       // ),
+                                        //       SizedBox(
+                                        //         width: 15,
+                                        //       ),
+                                        //       // IconButton(
+                                        //       //   // icon: FaIcon(
+                                        //       //   //     FontAwesomeIcons
+                                        //       //   //         .googlePlusG,
+                                        //       //   //     size: 35),
+                                        //       //   onPressed: () {},
+                                        //       // ),
+                                        //     ],
+                                        //   ),
+                                        // )
+
+                                        Container(
+                                          //color: Colors.grey[300],
+                                          alignment: Alignment.center,
+                                          margin: const EdgeInsets.only(top: 30),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              _postData();
+                                                  
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      Colors.lightBlue[900],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                              width: deviceWidth * 0.60,
+                                              height: 50,
+                                              child: const Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Create an Account',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20.0),
+                                                  ),
+                                                  // Padding(
+                                                  //     padding:
+                                                  //         EdgeInsets.only(
+                                                  //             right: 10)),
+                                                  // Icon(
+                                                  //   Icons.arrow_forward,
+                                                  //   size: 20.0,
+                                                  //   color: Colors.white,
+                                                  // ),
+                                                ],
                                               ),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             )
+                          ),
                           ],
                         ),
                       ),
                     ],
                   ),
                 )
-              : Login_Page(),
+              : const Login_Page(),
         ),
       ),
     );
   }
+
+
+
+  
+Future<void> _postData() async {
+    final String name = _nameController.text;
+    final String password = _passwordController.text;
+    final int age = int.tryParse(_ageController.text) ?? 0;
+    final String email = _emailController.text;
+
+    final dio = Dio();
+    dio.options.headers['Authorization'] = 'Basic ${base64Encode(utf8.encode('asam:8385'))}';
+
+ 
+      final response = await dio.post(
+        'http://10.0.2.2:8080/', // Replace with your actual port if it's different
+        data: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'age': age,
+          
+        },
+      );
+
+  if (response.statusCode == 200) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return  AlertDialog(
+              title: Text('Registration Successful'),
+              content: Text('You have successfully registered!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    // Navigate to login page or perform any other action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login_Page()),
+                    );
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+
+          showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return  AlertDialog(
+              title: Text('Registration Successful'),
+              content: Text('You have successfully registered!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    // Navigate to login page or perform any other action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login_Page()),
+                    );
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+
+        print('Error: ${response.data}');
+      }
+    
+  }
+
+
+
+
 }

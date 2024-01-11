@@ -7,7 +7,7 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: Text('History'),
+      child: const Text('History'),
     );
   }
 }

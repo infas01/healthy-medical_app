@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TopAnime extends StatelessWidget {
   //const TopAnime({super.key});
 
@@ -8,7 +9,7 @@ class TopAnime extends StatelessWidget {
   int seconds;
   double padding;
 
-  TopAnime(this.seconds, this.padding, {required this.child, this.curve});
+  TopAnime(this.seconds, this.padding, {super.key, required this.child, this.curve});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class TopAnime extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class BottomAnime extends StatelessWidget {
   //const BottomAnime({super.key});
   Widget? child;
@@ -36,7 +38,7 @@ class BottomAnime extends StatelessWidget {
   int seconds;
   double padding;
 
-  BottomAnime(this.seconds, this.padding, {required this.child, this.curve});
+  BottomAnime(this.seconds, this.padding, {super.key, required this.child, this.curve});
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +59,14 @@ class BottomAnime extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class LeftAnime extends StatelessWidget {
   Widget? child;
   Curve? curve;
   int seconds;
   double padding;
 
-  LeftAnime(this.seconds, this.padding, {required this.child, this.curve});
+  LeftAnime(this.seconds, this.padding, {super.key, required this.child, this.curve});
 
   @override
   Widget build(BuildContext context) {
@@ -84,13 +87,14 @@ class LeftAnime extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class RightAnime extends StatelessWidget {
   Widget? child;
   Curve? curve;
   int seconds;
   double padding;
 
-  RightAnime(this.seconds, this.padding, {required this.child, this.curve});
+  RightAnime(this.seconds, this.padding, {super.key, required this.child, this.curve});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthy/Pages/booking_page.dart';
 import 'package:healthy/Pages/letstalk_screen.dart';
@@ -12,7 +11,7 @@ class NavBarRoots extends StatefulWidget {
 class _NavBarRootsState extends State<NavBarRoots> {
   int _selectedIndex = 0;
   final _screens = [
-    SubHomePage(),
+    const SubHomePage(),
     ChatScreen(),
     //LetsTalkScreen(),
     BookingPage(),
