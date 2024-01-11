@@ -164,7 +164,7 @@ class _Login_PageState extends State<Login_Page> {
                                           EdgeInsets.only(left: 25, right: 25),
                                       //color: Colors.red[200],
                                       width: deviceWidth,
-                                      height: 250.0 + adjustHeight,
+                                      height: 300.0 + adjustHeight,
                                       child: TopAnime(
                                         1,
                                         5,
@@ -223,7 +223,7 @@ class _Login_PageState extends State<Login_Page> {
                                             //   ),
                                             // )
                                             Container(
-                                              color: Colors.grey[300],
+                                              //color: Colors.grey[300],
                                               alignment: Alignment.center,
                                               child: GestureDetector(
                                                 onTap: () {
@@ -258,6 +258,35 @@ class _Login_PageState extends State<Login_Page> {
                                                 ),
                                               ),
                                             ),
+                                            selectedIndex == 0
+                                                ? TopAnime(
+                                                    2,
+                                                    3,
+                                                    curve: Curves.fastOutSlowIn,
+                                                    child: Container(
+                                                      //color: Colors.red,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      margin: EdgeInsets.only(
+                                                          top: 0,
+                                                          left: 5,
+                                                          bottom: 10),
+                                                      height:
+                                                          deviceHeight * 0.05,
+                                                      child: Text(
+                                                        "Forgot Password?",
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .grey[800],
+                                                            fontSize:
+                                                                adjustWidth - 5,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Signup_Page()
                                           ],
                                         ),
                                       ),
@@ -268,27 +297,6 @@ class _Login_PageState extends State<Login_Page> {
                             ],
                           ),
                         ),
-                        selectedIndex == 0
-                            ? TopAnime(
-                                2,
-                                5,
-                                curve: Curves.fastOutSlowIn,
-                                child: Container(
-                                  color: Colors.red,
-                                  alignment: Alignment.centerLeft,
-                                  margin: EdgeInsets.only(
-                                      top: 10, left: 25, bottom: 10),
-                                  height: deviceHeight * 0.05,
-                                  child: Text(
-                                    "Forgot Password?",
-                                    style: TextStyle(
-                                        color: Colors.grey[800],
-                                        fontSize: adjustWidth - 5,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ),
-                              )
-                            : Signup_Page()
                       ],
                     ),
                   )
