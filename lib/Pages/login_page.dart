@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dio/dio.dart';
 import 'package:healthy/widgets/navbar_roots.dart';
 
 import '../Animation/animation.dart';
@@ -15,6 +18,10 @@ class Login_Page extends StatefulWidget {
 class _Login_PageState extends State<Login_Page> {
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 0;
+
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var deviceHeight;
@@ -62,8 +69,9 @@ class _Login_PageState extends State<Login_Page> {
                                             child: Column(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      25.0, 0.0, 20.0, 0.0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          25.0, 0.0, 20.0, 0.0),
                                                   child: Text(
                                                     options[index],
                                                     style: TextStyle(
@@ -160,8 +168,8 @@ class _Login_PageState extends State<Login_Page> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      padding:
-                                          const EdgeInsets.only(left: 25, right: 25),
+                                      padding: const EdgeInsets.only(
+                                          left: 25, right: 25),
                                       //color: Colors.red[200],
                                       width: deviceWidth,
                                       height: 230.0 + adjustHeight,
@@ -173,18 +181,20 @@ class _Login_PageState extends State<Login_Page> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            const TextField(
-                                              cursorColor: Colors.black,
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                              showCursor: true,
-                                              decoration:
-                                                  textFiledInputDecoration,
-                                            ),
+                                            TextField(
+                                                controller: _emailController,
+                                                cursorColor: Colors.black,
+                                                style: const TextStyle(
+                                                    color: Colors.black),
+                                                showCursor: true,
+                                                decoration:
+                                                    textFiledInputDecoration),
+
                                             SizedBox(
                                               height: 10.0 + adjustHeight,
                                             ),
                                             TextField(
+                                                controller: _passwordController,
                                                 cursorColor: Colors.black,
                                                 style: const TextStyle(
                                                     color: Colors.black),
@@ -227,11 +237,7 @@ class _Login_PageState extends State<Login_Page> {
                                               alignment: Alignment.center,
                                               child: GestureDetector(
                                                 onTap: () {
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              NavBarRoots()));
+                                                  _postData();
                                                 },
                                                 child: Container(
                                                   decoration: BoxDecoration(
@@ -285,7 +291,8 @@ class _Login_PageState extends State<Login_Page> {
                                 child: Container(
                                   //color: Colors.red,
                                   alignment: Alignment.centerLeft,
-                                  margin: const EdgeInsets.only(left: 25, bottom: 10),
+                                  margin: const EdgeInsets.only(
+                                      left: 25, bottom: 10),
                                   height: deviceHeight * 0.05,
                                   child: Text(
                                     "Forgot Password?",
@@ -303,5 +310,81 @@ class _Login_PageState extends State<Login_Page> {
                 : const Signup_Page()),
       ),
     );
+  }
+
+  Future<void> _postData() async {
+    final String password = _passwordController.text;
+    final String email = _emailController.text;
+
+    final dio = Dio();
+    dio.options.headers['Content-Type'] = 'application/json';
+    dio.options.headers['Authorization'] =
+        'Basic ${base64Encode(utf8.encode('asam:8385'))}';
+
+    final response = await dio.post(
+      'http://10.0.2.2:8080/login', // Replace with your actual port if it's different
+      data: {
+        'email': email,
+        'password': password,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var jdata = json.decode(response.data);
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('id', jdata["id"]);
+      prefs.setString('name', jdata["name"]);
+      prefs.setString('email', jdata["email"]);
+
+      
+      print(response.data);
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Login Successful'),
+            content: Text('You have successfully Login!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NavBarRoots()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('login failed'),
+            content: Text('Your Email or Password is wrong'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login_Page()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+
+      print('Error: ${response.data}');
+    }
   }
 }

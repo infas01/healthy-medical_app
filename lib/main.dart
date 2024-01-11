@@ -15,10 +15,13 @@ class healthy extends StatelessWidget {
       title: 'Healthy',
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      
       //home: Home_Page(),
     );
   }
 }
+
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,11 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'history_page.dart';
 import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
 
-class SubHomePage extends StatelessWidget {
-  const SubHomePage({Key? key});
 
+class SubHomePage extends StatefulWidget {
+  const SubHomePage({super.key});
+
+  @override
+  State<SubHomePage> createState() => _SubHomePageState();
+}
+
+class _SubHomePageState extends State<SubHomePage> {
+
+  late SharedPreferences prefs;
+  String? id;
+  String? name;
+  String? email;
+  String? password;
+   late Future<void> _preferencesFuture;
+
+  @override
+  void initState() {
+    super.initState();
+     _loadPreferences();
+  }
+
+  Future<void> _loadPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+
+     setState(() {
+      id = prefs.getString('id');
+      name = prefs.getString('name');
+      email = prefs.getString('email');
+      password = prefs.getString('password');
+    });
+
+    // Do something with the retrieved values if needed
+    print('Stored values: id=$id, name=$name, email=$email, password=$password');
+  }
+
+
+  
   @override
   Widget build(BuildContext context) {
     var _deviceHeight, _deviceWidth;
@@ -13,8 +50,8 @@ class SubHomePage extends StatelessWidget {
     _deviceWidth = MediaQuery.of(context).size.width;
     final drawerHeader = Container(
       child: UserAccountsDrawerHeader(
-        accountName: const Text('Infas'),
-        accountEmail: const Text('infas1002@gmail.com'),
+        accountName:  Text('$name'),
+        accountEmail: Text('$email'),
         currentAccountPicture: const CircleAvatar(
           child: FlutterLogo(
             size: 40.0,
@@ -67,7 +104,7 @@ class SubHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[700],
-        title: const Text('Hello Infas'),
+        title:  Text('Hello $name'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -293,3 +330,13 @@ class SubHomePage extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
