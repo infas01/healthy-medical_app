@@ -167,7 +167,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                         EdgeInsets.only(left: 25, right: 25),
                                     //color: Colors.red[200],
                                     width: deviceWidth,
-                                    height: 330.0 + adjustHeight,
+                                    height: 400.0 + adjustHeight,
                                     child: TopAnime(
                                       1,
                                       5,
