@@ -1,5 +1,5 @@
 import 'package:healthy/widgets/navbar_roots.dart';
-
+import 'package:lottie/lottie.dart';
 import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:flutter/material.dart';
@@ -129,6 +129,12 @@ class _Login_PageState extends State<Login_Page> {
                               ),
                               SizedBox(
                                 height: 10.0 + adjustHeight,
+                              ),
+                              Center(
+                                child: Container(
+                                    //color: Colors.blue,
+                                    height: 250,
+                                    child: Lottie.asset('assets/Login.json')),
                               ),
                               Container(
                                 //color: Colors.yellow,
