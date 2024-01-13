@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:healthy/Pages/booking_page.dart';
+import 'package:healthy/askQuestion/ask.dart';
+import 'package:healthy/clinicchat/clinic_chat.dart';
+import 'package:healthy/widgets/upcoming_schedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'history_page.dart';
 import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
 
@@ -19,7 +22,7 @@ class _SubHomePageState extends State<SubHomePage> {
   String? name;
   String? email;
   String? password;
-   late Future<void> _preferencesFuture;
+
 
   @override
   void initState() {
@@ -37,8 +40,6 @@ class _SubHomePageState extends State<SubHomePage> {
       password = prefs.getString('password');
     });
 
-    // Do something with the retrieved values if needed
-    print('Stored values: id=$id, name=$name, email=$email, password=$password');
   }
 
 
@@ -130,7 +131,7 @@ class _SubHomePageState extends State<SubHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const HistoryPage(),
+                                builder: (context) => const Ask(),
                               ),
                             );
                           },
@@ -158,7 +159,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                   color: Colors.blue,
                                 ),
                                 Text(
-                                  "History",
+                                  "chat With AI",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -230,7 +231,7 @@ class _SubHomePageState extends State<SubHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => AppointmentScreen(),
+                                builder: (context) =>  const UpcomingSchedule(),
                               ),
                             );
                           },
@@ -303,7 +304,105 @@ class _SubHomePageState extends State<SubHomePage> {
                                   color: Colors.blue,
                                 ),
                                 Text(
-                                  "Something",
+                                  "Booking",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                 Container(
+                    height: 150.0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  const Clinicask(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 140,
+                            margin: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  spreadRadius: 2,
+                                ),
+                              ],
+                            ),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  Icons.chat_rounded,
+                                  size: 35,
+                                  color: Colors.blue,
+                                ),
+                                Text(
+                                  "Chat With Clinic",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BookingPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 140,
+                            margin: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 4,
+                                  spreadRadius: 2,
+                                ),
+                              ],
+                            ),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Icon(
+                                  Icons.food_bank_outlined,
+                                  size: 35,
+                                  color: Colors.blue,
+                                ),
+                                Text(
+                                  "Diet plan",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -320,6 +419,7 @@ class _SubHomePageState extends State<SubHomePage> {
                 ],
               ),
             ),
+
           ],
         ),
       ),

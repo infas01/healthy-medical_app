@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/Pages/booking_page.dart';
-import 'package:healthy/Pages/letstalk_screen.dart';
+import 'package:healthy/Pages/profile.dart';
+import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/Pages/sub_home_page.dart';
 import '../Pages/schedule_screen.dart';
 
@@ -14,10 +15,9 @@ class _NavBarRootsState extends State<NavBarRoots> {
   int _selectedIndex = 0;
   final _screens = [
     const SubHomePage(),
-    ChatScreen(),
    // LetsTalkScreen(),
-    const ScheduleScreen(),
     const BookingPage(),
+    const Profile(),
   ];
 
   @override
@@ -48,14 +48,9 @@ class _NavBarRootsState extends State<NavBarRoots> {
             const BottomNavigationBarItem(
                 icon: Icon(Icons.home), label: "Home"),
             const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.chat_rounded,
-                ),
-                label: "Let's Talk"),
+                icon: Icon(Icons.verified_user), label: "Profile"),
             const BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month_outlined), label: "Schedule"),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.book_online), label: "Booking"),
+                icon: Icon(Icons.settings), label: "Settings"),
           ],
         ),
       ),
