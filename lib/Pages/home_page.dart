@@ -19,7 +19,7 @@ class Home_Page extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  child: Lottie.asset('assets/Main_1.json'),
+                  child: Lottie.asset('images/Main_1.json'),
                 ),
                 SizedBox(height: deviceHeight * 0.02),
                 ShaderMask(
@@ -54,7 +54,7 @@ class Home_Page extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(top: 20),
                     child: Image.asset(
-                      'assets/Healthy_Logo_R.png',
+                      'images/Healthy_Logo_R.png',
                       width: 100,
                       height: 100,
                     ),

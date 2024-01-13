@@ -119,7 +119,7 @@ class _Login_PageState extends State<Login_Page> {
                                       child: Column(
                                         children: [
                                           Image.asset(
-                                            'assets/Healthy_Logo_R.png',
+                                            'images/Healthy_Logo_R.png',
                                           ),
                                         ],
                                       ),
@@ -134,7 +134,7 @@ class _Login_PageState extends State<Login_Page> {
                                 child: Container(
                                     //color: Colors.blue,
                                     height: 250,
-                                    child: Lottie.asset('assets/Login.json')),
+                                    child: Lottie.asset('images/Login.json')),
                               ),
                               Container(
                                 //color: Colors.yellow,
