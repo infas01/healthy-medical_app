@@ -142,7 +142,7 @@ class _Login_PageState extends State<Login_Page> {
                                 child: Container(
                                     //color: Colors.blue,
                                     height: 250,
-                                    child: Lottie.asset('assets/Login.json')),
+                                    child: Lottie.asset('images/Login.json')),
                               ),
                               Container(
                                 //color: Colors.yellow,
@@ -253,7 +253,7 @@ class _Login_PageState extends State<Login_Page> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   width: deviceWidth * 0.35,
-                                                  height: 40,
+                                                  height: 50,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -263,7 +263,7 @@ class _Login_PageState extends State<Login_Page> {
                                                         'Login',
                                                         style: TextStyle(
                                                             color: Colors.white,
-                                                            fontSize: 20.0),
+                                                            fontSize: 25.0),
                                                       ),
                                                     ],
                                                   ),
@@ -281,17 +281,15 @@ class _Login_PageState extends State<Login_Page> {
                                                           Alignment.centerLeft,
                                                       margin: EdgeInsets.only(
                                                           top: 0,
-                                                          left: 5,
+                                                          left: 3,
                                                           bottom: 10),
-                                                      height:
-                                                          deviceHeight * 0.05,
+                                                      height: 30,
                                                       child: Text(
                                                         "Forgot Password?",
                                                         style: TextStyle(
                                                             color: Colors
                                                                 .grey[800],
-                                                            fontSize:
-                                                                adjustWidth - 5,
+                                                            fontSize: 20,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w700),
@@ -342,7 +340,6 @@ class _Login_PageState extends State<Login_Page> {
       prefs.setString('name', jdata["name"]);
       prefs.setString('email', jdata["email"]);
 
-      
       print(response.data);
 
       showDialog(

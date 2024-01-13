@@ -14,13 +14,11 @@ class Signup_Page extends StatefulWidget {
 }
 
 class _Signup_PageState extends State<Signup_Page> {
-
-   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
- 
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 1;
   @override
@@ -70,8 +68,9 @@ class _Signup_PageState extends State<Signup_Page> {
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsets.fromLTRB(
-                                                    25.0, 0.0, 20.0, 0.0),
+                                                padding:
+                                                    const EdgeInsets.fromLTRB(
+                                                        25.0, 0.0, 20.0, 0.0),
                                                 child: Text(
                                                   options[index],
                                                   style: TextStyle(
@@ -168,92 +167,68 @@ class _Signup_PageState extends State<Signup_Page> {
                               height: 5.0 + adjustHeight,
                             ),
                             Container(
-                              //padding: EdgeInsets.fromLTRB(2, 0, 25, 0),
-                              //color: Colors.blue,
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(left: 25, right: 25),
-                                    //color: Colors.red[200],
-                                    width: deviceWidth,
-                                    height: 400.0 + adjustHeight,
-                                    child: TopAnime(
-                                      1,
-                                      5,
-                                      curve: Curves.easeInExpo,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          TextField(
-                                              cursorColor: Colors.black,
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                              showCursor: true,
-                                              decoration:
-                                                  textFiledInputDecoration
-                                                      .copyWith(
-                                                          labelText:
-                                                              "Username")),
-
-                                          SizedBox(
-                                            height: 10.0 + adjustHeight,
-                                          ),
-                                          TextField(
+                                //padding: EdgeInsets.fromLTRB(2, 0, 25, 0),
+                                //color: Colors.blue,
+                                child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 25, right: 25),
+                                  //color: Colors.red[200],
+                                  width: deviceWidth,
+                                  height: 400.0 + adjustHeight,
+                                  child: TopAnime(
+                                    1,
+                                    5,
+                                    curve: Curves.easeInExpo,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        TextField(
                                             cursorColor: Colors.black,
-                                            style: const TextStyle(
-                                                color: Colors.black),
+                                            style:
+                                                TextStyle(color: Colors.black),
                                             showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Username")),
+                                            decoration: textFiledInputDecoration
+                                                .copyWith(
+                                                    labelText: "Username")),
 
                                         SizedBox(
                                           height: 10.0 + adjustHeight,
                                         ),
-                                         TextField(
-                                          controller: _emailController,
-                                          cursorColor: Colors.black,
-                                          style:
-                                              const TextStyle(color: Colors.black),
-                                          showCursor: true,
-                                          decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Email")),
-                    
+
+                                        TextField(
+                                            controller: _emailController,
+                                            cursorColor: Colors.black,
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            showCursor: true,
+                                            decoration: textFiledInputDecoration
+                                                .copyWith(labelText: "Email")),
+
                                         SizedBox(
                                           height: 10.0 + adjustHeight,
                                         ),
                                         TextField(
-                                          controller: _passwordController,
+                                            controller: _passwordController,
                                             cursorColor: Colors.black,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Password")),
+                                            decoration: textFiledInputDecoration
+                                                .copyWith(
+                                                    labelText: "Password")),
                                         SizedBox(
                                           height: 15.0 + adjustHeight,
                                         ),
                                         TextField(
-                                          controller: _ageController,
+                                            controller: _ageController,
                                             cursorColor: Colors.black,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Age")),
+                                            decoration: textFiledInputDecoration
+                                                .copyWith(labelText: "Age")),
                                         SizedBox(
                                           height: 15.0 + adjustHeight,
                                         ),
@@ -286,16 +261,15 @@ class _Signup_PageState extends State<Signup_Page> {
                                         Container(
                                           //color: Colors.grey[300],
                                           alignment: Alignment.center,
-                                          margin: const EdgeInsets.only(top: 30),
+                                          margin:
+                                              const EdgeInsets.only(top: 30),
                                           child: GestureDetector(
                                             onTap: () {
                                               _postData();
-                                                  
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                  color:
-                                                      Colors.lightBlue[900],
+                                                  color: Colors.lightBlue[900],
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           10)),
@@ -330,8 +304,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                   ),
                                 ),
                               ],
-                            )
-                          ),
+                            )),
                           ],
                         ),
                       ),
@@ -344,82 +317,72 @@ class _Signup_PageState extends State<Signup_Page> {
     );
   }
 
-
-
-  
-Future<void> _postData() async {
+  Future<void> _postData() async {
     final String name = _nameController.text;
     final String password = _passwordController.text;
     final int age = int.tryParse(_ageController.text) ?? 0;
     final String email = _emailController.text;
 
     final dio = Dio();
-    dio.options.headers['Authorization'] = 'Basic ${base64Encode(utf8.encode('asam:8385'))}';
+    dio.options.headers['Authorization'] =
+        'Basic ${base64Encode(utf8.encode('asam:8385'))}';
 
- 
-      final response = await dio.post(
-        'http://10.0.2.2:8080/', // Replace with your actual port if it's different
-        data: {
-          'name': name,
-          'email': email,
-          'password': password,
-          'age': age,
-          
+    final response = await dio.post(
+      'http://10.0.2.2:8080/', // Replace with your actual port if it's different
+      data: {
+        'name': name,
+        'email': email,
+        'password': password,
+        'age': age,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('You have successfully registered!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login_Page()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('You have successfully registered!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login_Page()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
         },
       );
 
-  if (response.statusCode == 200) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return  AlertDialog(
-              title: Text('Registration Successful'),
-              content: Text('You have successfully registered!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // Navigate to login page or perform any other action
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login_Page()),
-                    );
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      } else {
-
-          showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return  AlertDialog(
-              title: Text('Registration Successful'),
-              content: Text('You have successfully registered!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // Navigate to login page or perform any other action
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login_Page()),
-                    );
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-
-        print('Error: ${response.data}');
-      }
-    
+      print('Error: ${response.data}');
+    }
   }
-
-
-
-
 }

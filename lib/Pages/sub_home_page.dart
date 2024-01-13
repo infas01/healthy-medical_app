@@ -136,7 +136,7 @@ class _SubHomePageState extends State<SubHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.lightBlue[900],
         title: Text(
-          'Hello Infas',
+          'Hello $name',
           style: TextStyle(
             color: Colors.white,
           ),
