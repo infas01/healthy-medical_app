@@ -13,8 +13,6 @@ class _NavBarRootsState extends State<NavBarRoots> {
   final _screens = [
     const SubHomePage(),
     ChatScreen(),
-    //LetsTalkScreen(),
-    BookingPage(),
     BookingPage(),
   ];
 
@@ -44,14 +42,9 @@ class _NavBarRootsState extends State<NavBarRoots> {
             const BottomNavigationBarItem(
                 icon: Icon(Icons.home), label: "Home"),
             const BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.chat_rounded,
-                ),
-                label: "Let's Talk"),
+                icon: Icon(Icons.calendar_month_outlined), label: "Profile"),
             const BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_month_outlined), label: "Schedule"),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.book_online), label: "Booking"),
+                icon: Icon(Icons.book_online), label: "Settings"),
           ],
         ),
       ),

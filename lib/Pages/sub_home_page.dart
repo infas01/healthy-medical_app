@@ -57,13 +57,45 @@ class _SubHomePageState extends State<SubHomePage> {
           ),
         ),
         decoration: BoxDecoration(
-          color: Colors.teal[700],
+          color: Colors.lightBlue[900],
         ),
       ),
     );
     final drawerItems = ListView(
       children: [
         drawerHeader,
+        Container(
+          color: Colors.green,
+          child: const Padding(
+            padding: EdgeInsets.fromLTRB(15, 8, 10, 8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Full Name:'),
+                      Text('Nizam Mohamed Infas'),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Blood Group:'),
+                      Text('B+'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         ListTile(
           title: const Text('Settings'),
           leading: const Icon(Icons.settings),
@@ -102,21 +134,27 @@ class _SubHomePageState extends State<SubHomePage> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal[700],
-        title: Text('Hello $name'),
+        backgroundColor: Colors.lightBlue[900],
+        title: Text(
+          'Hello Infas',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height: _deviceHeight * 0.25,
+              height: 220,
               child: imageList,
             ),
             const SizedBox(
               height: 20.0,
             ),
             Container(
-              //color: Colors.blue[200],
+              color: Colors.blue[200],
               child: Column(
                 children: [
                   SizedBox(
@@ -134,9 +172,9 @@ class _SubHomePageState extends State<SubHomePage> {
                             );
                           },
                           child: Container(
-                            width: 140,
-                            margin: const EdgeInsets.all(10),
-                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            width: _deviceWidth * 0.4,
+                            margin: EdgeInsets.all(10),
+                            padding: EdgeInsets.symmetric(vertical: 5),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -157,7 +195,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                   color: Colors.blue,
                                 ),
                                 Text(
-                                  "History",
+                                  "Chat With AI",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -179,9 +217,9 @@ class _SubHomePageState extends State<SubHomePage> {
                             );
                           },
                           child: Container(
-                            width: 140,
-                            margin: const EdgeInsets.all(10),
-                            padding: const EdgeInsets.symmetric(vertical: 15),
+                            width: _deviceWidth * 0.4,
+                            margin: EdgeInsets.all(10),
+                            padding: EdgeInsets.symmetric(vertical: 15),
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
@@ -302,7 +340,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                   color: Colors.blue,
                                 ),
                                 Text(
-                                  "Something",
+                                  "Booking",
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -323,7 +361,10 @@ class _SubHomePageState extends State<SubHomePage> {
         ),
       ),
       drawer: Drawer(
-        child: drawerItems,
+        child: Container(
+          color: Colors.white,
+          child: drawerItems,
+        ),
         width: 250.0,
       ),
     );
