@@ -7,6 +7,7 @@ import 'package:healthy/Pages/settings_screen.dart';
 import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/clinicchat/clinic_chat.dart';
 import 'package:healthy/widgets/upcoming_schedule.dart';
+import 'package:http/retry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
@@ -41,7 +42,7 @@ class _SubHomePageState extends State<SubHomePage> {
       name = prefs.getString('name');
       email = prefs.getString('email');
       password = prefs.getString('password');
-      base64String = prefs.getString('image')!;
+      base64String = prefs.getString("image");
     });
   }
 
@@ -54,8 +55,15 @@ class _SubHomePageState extends State<SubHomePage> {
       child: UserAccountsDrawerHeader(
         accountName: Text('$name'),
         accountEmail: Text('$email'),
-        currentAccountPicture:
-            const CircleAvatar(child: Image.memory(base64Decode(base64String))),
+        currentAccountPicture: base64String != null
+        ? CircleAvatar(
+            backgroundImage: MemoryImage(base64Decode(base64String!)),
+          )
+        : const CircleAvatar(
+            // Provide a default image or leave it empty as per your requirement
+            // For example, you can use AssetImage to load an image from your assets
+            backgroundImage: AssetImage('images/doctor1.png'),
+          ),
         decoration: BoxDecoration(
           color: Colors.teal[700],
         ),

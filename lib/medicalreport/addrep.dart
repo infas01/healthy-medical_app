@@ -27,7 +27,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
   }
 
   Future<void> sendDataToBackend() async {
-    final String apiUrl = 'http://your-backend-api-endpoint'; // Replace with your backend API endpoint
+    final String apiUrl = 'http://10.0.2.2/medadd'; // Replace with your backend API endpoint
 
     final response = await http.post(
       Uri.parse(apiUrl),
@@ -35,6 +35,7 @@ class _DataEntryFormState extends State<DataEntryForm> {
       body: jsonEncode({
         'title': titleController.text,
         'image': base64Encode(File(imagePath).readAsBytesSync()),
+        
       }),
     );
 
