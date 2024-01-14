@@ -336,8 +336,8 @@ class _Login_PageState extends State<Login_Page> {
       prefs.setString('id', jdata["id"]);
       prefs.setString('name', jdata["name"]);
       prefs.setString('email', jdata["email"]);
-      prefs.setString('image', jdata["image"]);
 
+      
       print(response.data);
 
       showDialog(
@@ -349,7 +349,8 @@ class _Login_PageState extends State<Login_Page> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context, true);
+
+                  Navigator.pop(context,true);
                   // Navigate to login page or perform any other action
                   Navigator.pushReplacement(
                     context,

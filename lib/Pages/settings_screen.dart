@@ -1,18 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SettingScreen extends StatefulWidget {
+class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
-}
-
-class _SettingScreenState extends State<SettingScreen> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
+    return Padding(
       padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,7 +178,6 @@ class _SettingScreenState extends State<SettingScreen> {
           ),
         ],
       ),
-    ),
     );
   }
 }

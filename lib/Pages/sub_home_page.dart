@@ -1,15 +1,12 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:healthy/Pages/booking_page.dart';
-import 'package:healthy/Pages/settings_screen.dart';
 import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/clinicchat/clinic_chat.dart';
 import 'package:healthy/widgets/upcoming_schedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
+
 
 class SubHomePage extends StatefulWidget {
   const SubHomePage({super.key});
@@ -19,32 +16,34 @@ class SubHomePage extends StatefulWidget {
 }
 
 class _SubHomePageState extends State<SubHomePage> {
+
   late SharedPreferences prefs;
   String? id;
   String? name;
   String? email;
   String? password;
 
-  String? base64String;
 
   @override
   void initState() {
     super.initState();
-    _loadPreferences();
+     _loadPreferences();
   }
 
   Future<void> _loadPreferences() async {
     prefs = await SharedPreferences.getInstance();
 
-    setState(() {
+     setState(() {
       id = prefs.getString('id');
       name = prefs.getString('name');
       email = prefs.getString('email');
       password = prefs.getString('password');
-      base64String = prefs.getString('image')!;
     });
+
   }
 
+
+  
   @override
   Widget build(BuildContext context) {
     var _deviceHeight, _deviceWidth;
@@ -52,10 +51,13 @@ class _SubHomePageState extends State<SubHomePage> {
     _deviceWidth = MediaQuery.of(context).size.width;
     final drawerHeader = Container(
       child: UserAccountsDrawerHeader(
-        accountName: Text('$name'),
+        accountName:  Text('$name'),
         accountEmail: Text('$email'),
-        currentAccountPicture:
-            const CircleAvatar(child: Image.memory(base64Decode(base64String))),
+        currentAccountPicture: const CircleAvatar(
+          child: FlutterLogo(
+            size: 40.0,
+          ),
+        ),
         decoration: BoxDecoration(
           color: Colors.teal[700],
         ),
@@ -68,12 +70,7 @@ class _SubHomePageState extends State<SubHomePage> {
           title: const Text('Settings'),
           leading: const Icon(Icons.settings),
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const SettingScreen(),
-              ),
-            );
+            Navigator.pop(context);
           },
         ),
         ListTile(
@@ -108,7 +105,7 @@ class _SubHomePageState extends State<SubHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.teal[700],
-        title: Text('Hello $name'),
+        title:  Text('Hello $name'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -179,7 +176,7 @@ class _SubHomePageState extends State<SubHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Medreminder(),
+                                builder: (context) =>const Medreminder(),
                               ),
                             );
                           },
@@ -234,7 +231,7 @@ class _SubHomePageState extends State<SubHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const UpcomingSchedule(),
+                                builder: (context) =>  const UpcomingSchedule(),
                               ),
                             );
                           },
@@ -321,7 +318,8 @@ class _SubHomePageState extends State<SubHomePage> {
                       ],
                     ),
                   ),
-                  Container(
+
+                 Container(
                     height: 150.0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -331,7 +329,7 @@ class _SubHomePageState extends State<SubHomePage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Clinicask(),
+                                builder: (context) =>  const Clinicask(),
                               ),
                             );
                           },
@@ -421,6 +419,7 @@ class _SubHomePageState extends State<SubHomePage> {
                 ],
               ),
             ),
+
           ],
         ),
       ),
@@ -431,3 +430,13 @@ class _SubHomePageState extends State<SubHomePage> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
