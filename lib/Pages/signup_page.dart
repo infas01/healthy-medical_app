@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 
 import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import './login_page.dart';
-import 'package:image_picker/image_picker.dart';
 
 class Signup_Page extends StatefulWidget {
   const Signup_Page({super.key});
@@ -16,25 +14,13 @@ class Signup_Page extends StatefulWidget {
 }
 
 class _Signup_PageState extends State<Signup_Page> {
-  final TextEditingController _nameController = TextEditingController();
+
+   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  TextEditingController titleController = TextEditingController();
-  String imagePath = '';
-
-  Future<void> pickImage() async {
-    final picker = ImagePicker();
-    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedImage != null) {
-      setState(() {
-        imagePath = pickedImage.path;
-      });
-    }
-  }
-
+ 
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 1;
   @override
@@ -84,9 +70,8 @@ class _Signup_PageState extends State<Signup_Page> {
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        25.0, 0.0, 20.0, 0.0),
+                                                padding: const EdgeInsets.fromLTRB(
+                                                    25.0, 0.0, 20.0, 0.0),
                                                 child: Text(
                                                   options[index],
                                                   style: TextStyle(
@@ -154,43 +139,40 @@ class _Signup_PageState extends State<Signup_Page> {
                               //color: Colors.yellow,
                               padding: const EdgeInsets.only(left: 25),
                               width: deviceWidth,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  ElevatedButton(
-                                    style: ButtonStyle(
-                                      minimumSize: MaterialStateProperty.all(
-                                          Size(100, 50)),
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.green),
-                                      textStyle: MaterialStateProperty.all(
-                                          const TextStyle(fontSize: 16)),
+                              child: TopAnime(
+                                1,
+                                5,
+                                curve: Curves.fastOutSlowIn,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("Hello!",
+                                        style: TextStyle(
+                                          fontSize: 15.0 + adjustWidth,
+                                          fontWeight: FontWeight.w500,
+                                        )),
+                                    SizedBox(
+                                      height: adjustHeight,
                                     ),
-                                    onPressed: pickImage,
-                                    child: Text('Pick Image'),
-                                  ),
-                                  const SizedBox(height: 16.0),
-                                  imagePath.isNotEmpty
-                                      ? Image.file(
-                                          File(imagePath),
-                                          height: 100,
-                                        )
-                                      : Container(),
-                                ],
+                                    Text(
+                                      'Enter your details to create an account',
+                                      style: TextStyle(
+                                        fontSize: adjustWidth - 5.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-
-                              // this is for get image from use
                             ),
                             SizedBox(
                               height: 5.0 + adjustHeight,
                             ),
                             SingleChildScrollView(
-                                child: Column(
+                            child: Column(
                               children: [
                                 Container(
-                                  padding: const EdgeInsets.only(
-                                      left: 25, right: 25),
+                                  padding:
+                                      const EdgeInsets.only(left: 25, right: 25),
                                   //color: Colors.red[200],
                                   width: deviceWidth,
                                   height: 500.0 + adjustHeight,
@@ -203,50 +185,60 @@ class _Signup_PageState extends State<Signup_Page> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         TextField(
-                                            controller: _nameController,
+                                          controller: _nameController,
                                             cursorColor: Colors.black,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             showCursor: true,
-                                            decoration: textFiledInputDecoration
-                                                .copyWith(
-                                                    labelText: "Username")),
+                                            decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Username")),
 
                                         SizedBox(
                                           height: 10.0 + adjustHeight,
                                         ),
-                                        TextField(
-                                            controller: _emailController,
-                                            cursorColor: Colors.black,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            showCursor: true,
-                                            decoration: textFiledInputDecoration
-                                                .copyWith(labelText: "Email")),
-
+                                         TextField(
+                                          controller: _emailController,
+                                          cursorColor: Colors.black,
+                                          style:
+                                              const TextStyle(color: Colors.black),
+                                          showCursor: true,
+                                          decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Email")),
+                    
                                         SizedBox(
                                           height: 10.0 + adjustHeight,
                                         ),
                                         TextField(
-                                            controller: _passwordController,
+                                          controller: _passwordController,
                                             cursorColor: Colors.black,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             showCursor: true,
-                                            decoration: textFiledInputDecoration
-                                                .copyWith(
-                                                    labelText: "Password")),
+                                            decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Password")),
                                         SizedBox(
                                           height: 15.0 + adjustHeight,
                                         ),
                                         TextField(
-                                            controller: _ageController,
+                                          controller: _ageController,
                                             cursorColor: Colors.black,
                                             style: const TextStyle(
                                                 color: Colors.black),
                                             showCursor: true,
-                                            decoration: textFiledInputDecoration
-                                                .copyWith(labelText: "Age")),
+                                            decoration:
+                                                textFiledInputDecoration
+                                                    .copyWith(
+                                                        labelText:
+                                                            "Age")),
                                         SizedBox(
                                           height: 15.0 + adjustHeight,
                                         ),
@@ -279,17 +271,16 @@ class _Signup_PageState extends State<Signup_Page> {
                                         Container(
                                           //color: Colors.grey[300],
                                           alignment: Alignment.center,
-                                          margin:
-                                              const EdgeInsets.only(top: 30),
+                                          margin: const EdgeInsets.only(top: 30),
                                           child: GestureDetector(
-                                            onTap: () async {
-                                              if (imagePath.isNotEmpty) {
-                                                await _postData();
-                                              }
+                                            onTap: () {
+                                              _postData();
+                                                  
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                  color: Colors.lightBlue[900],
+                                                  color:
+                                                      Colors.lightBlue[900],
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           10)),
@@ -324,7 +315,8 @@ class _Signup_PageState extends State<Signup_Page> {
                                   ),
                                 ),
                               ],
-                            )),
+                            )
+                          ),
                           ],
                         ),
                       ),
@@ -337,75 +329,82 @@ class _Signup_PageState extends State<Signup_Page> {
     );
   }
 
-  Future<void> _postData() async {
+
+
+  
+Future<void> _postData() async {
     final String name = _nameController.text;
     final String password = _passwordController.text;
     final int age = int.tryParse(_ageController.text) ?? 0;
     final String email = _emailController.text;
 
     final dio = Dio();
-    dio.options.headers['Authorization'] =
-        'Basic ${base64Encode(utf8.encode('asam:8385'))}';
-    print(base64Encode(File(imagePath).readAsBytesSync()));
-    var image = base64Encode(File(imagePath).readAsBytesSync());
+    dio.options.headers['Authorization'] = 'Basic ${base64Encode(utf8.encode('asam:8385'))}';
 
-    final response = await dio.post(
-      'http://10.0.2.2:8080/', // Replace with your actual port if it's different
-      data: {
-        'name': name,
-        'email': email,
-        'password': password,
-        'age': age,
-        'image': image,
-      },
-    );
-
-    if (response.statusCode == 200) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('You have successfully registered!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  // Navigate to login page or perform any other action
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login_Page()),
-                  );
-                },
-                child: Text('OK'),
-              ),
-            ],
-          );
-        },
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('You have successfully registered!'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  // Navigate to login page or perform any other action
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Login_Page()),
-                  );
-                },
-                child: Text('OK'),
-              ),
-            ],
-          );
+ 
+      final response = await dio.post(
+        'http://10.0.2.2:8080/', // Replace with your actual port if it's different
+        data: {
+          'name': name,
+          'email': email,
+          'password': password,
+          'age': age,
+          
         },
       );
 
-      print('Error: ${response.data}');
-    }
+  if (response.statusCode == 200) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return  AlertDialog(
+              title: Text('Registration Successful'),
+              content: Text('You have successfully registered!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    // Navigate to login page or perform any other action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login_Page()),
+                    );
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+
+          showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return  AlertDialog(
+              title: Text('Registration Successful'),
+              content: Text('You have successfully registered!'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    // Navigate to login page or perform any other action
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login_Page()),
+                    );
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+
+        print('Error: ${response.data}');
+      }
+    
   }
+
+
+
+
 }
