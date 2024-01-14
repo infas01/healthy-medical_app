@@ -253,7 +253,7 @@ class _Login_PageState extends State<Login_Page> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   width: deviceWidth * 0.35,
-                                                  height: 50,
+                                                  height: 40,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment

@@ -6,14 +6,12 @@ class ChatTile extends StatelessWidget {
   final String msg;
   final String time;
   final String img;
-  
   const ChatTile({
     Key? key,
     required this.name,
     required this.msg,
     required this.time,
     required this.img,
- 
   }) : super(key: key);
 
   @override
@@ -32,7 +30,7 @@ class ChatTile extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) =>  SimpleChatApp()),
+            MaterialPageRoute(builder: (context) => SimpleChatApp()),
           );
         },
         tileColor: Colors.white,

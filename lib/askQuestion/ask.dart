@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:healthy/widgets/navbar_roots.dart';
 
-
 class Ask extends StatelessWidget {
   const Ask({Key? key}) : super(key: key);
 
@@ -19,18 +18,19 @@ class Ask extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Color.fromARGB(255, 190, 28, 28)),
+          systemOverlayStyle: const SystemUiOverlayStyle(
+              statusBarColor: Color.fromARGB(255, 190, 28, 28)),
           backgroundColor: Colors.green,
           title: const Text('Tell Us To Help You'),
-           leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-             Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NavBarRoots()),
-                  ); // You can replace this with your desired navigation logic
-          },
-        ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NavBarRoots()),
+              );
+            },
+          ),
         ),
         body: const MyCustomForm(),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:healthy/widgets/navbar_roots.dart';
 import '/MedReminder/constants.dart';
 import '/MedReminder/global_bloc.dart';
 import '/MedReminder/models/medicine.dart';
@@ -14,7 +15,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('Medication'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NavBarRoots()),
+            );
+          },
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(2.h),
         child: Column(
@@ -23,7 +35,6 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-            //the widget take space as per need
             const Flexible(
               child: BottomContainer(),
             ),
@@ -32,7 +43,6 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: InkResponse(
         onTap: () {
-          // go to new entry page
           Navigator.push(
             context,
             MaterialPageRoute(
