@@ -24,13 +24,8 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-<<<<<<< HEAD
-        backgroundColor: Colors.black87,
-        title: const Text(
-=======
         backgroundColor: Colors.lightBlue[900],
         title: Text(
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
           'Let\'s Talk',
           style: TextStyle(
             fontWeight: FontWeight.w600,

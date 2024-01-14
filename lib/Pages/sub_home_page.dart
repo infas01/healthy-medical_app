@@ -10,7 +10,6 @@ import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
 import 'package:lottie/lottie.dart';
 
-
 class SubHomePage extends StatefulWidget {
   const SubHomePage({super.key});
 
@@ -19,7 +18,6 @@ class SubHomePage extends StatefulWidget {
 }
 
 class _SubHomePageState extends State<SubHomePage> {
-
   late SharedPreferences prefs;
   String? id;
   String? name;
@@ -28,28 +26,24 @@ class _SubHomePageState extends State<SubHomePage> {
 
   String? base64String;
 
-
   @override
   void initState() {
     super.initState();
-     _loadPreferences();
+    _loadPreferences();
   }
 
   Future<void> _loadPreferences() async {
     prefs = await SharedPreferences.getInstance();
 
-     setState(() {
+    setState(() {
       id = prefs.getString('id');
       name = prefs.getString('name');
       email = prefs.getString('email');
       password = prefs.getString('password');
       base64String = prefs.getString("image");
     });
-
   }
 
-
-  
   @override
   Widget build(BuildContext context) {
     var _deviceHeight, _deviceWidth;
@@ -58,17 +52,17 @@ class _SubHomePageState extends State<SubHomePage> {
     final drawerHeader = Container(
       //color: Colors.yellow,
       child: UserAccountsDrawerHeader(
-        accountName:  Text('$name'),
+        accountName: Text('$name'),
         accountEmail: Text('$email'),
         currentAccountPicture: base64String != null
-        ? CircleAvatar(
-            backgroundImage: MemoryImage(base64Decode(base64String!)),
-          )
-        : const CircleAvatar(
-            // Provide a default image or leave it empty as per your requirement
-            // For example, you can use AssetImage to load an image from your assets
-            backgroundImage: AssetImage('images/doctor1.png'),
-          ),
+            ? CircleAvatar(
+                backgroundImage: MemoryImage(base64Decode(base64String!)),
+              )
+            : const CircleAvatar(
+                // Provide a default image or leave it empty as per your requirement
+                // For example, you can use AssetImage to load an image from your assets
+                backgroundImage: AssetImage('images/doctor1.png'),
+              ),
         decoration: BoxDecoration(
           color: Colors.lightBlue[900],
         ),
@@ -304,7 +298,8 @@ class _SubHomePageState extends State<SubHomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BookingPage(),
+                                    builder: (context) =>
+                                        const UpcomingSchedule(),
                                   ),
                                 );
                               },
@@ -351,7 +346,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BookingPage(),
+                                    builder: (context) => AppointmentScreen(),
                                   ),
                                 );
                               },
@@ -501,7 +496,6 @@ class _SubHomePageState extends State<SubHomePage> {
                 ],
               ),
             ),
-
           ],
         ),
       ),
@@ -515,13 +509,3 @@ class _SubHomePageState extends State<SubHomePage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-

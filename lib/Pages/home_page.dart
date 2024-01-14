@@ -11,29 +11,6 @@ class Home_Page extends StatelessWidget {
     deviceWidth = MediaQuery.of(context).size.width;
     deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-<<<<<<< HEAD
-      body: Padding(
-        padding: EdgeInsets.only(top: deviceHeight * 0.2),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                'images/Healthy_Logo_R.png',
-                height: deviceHeight * 0.4,
-                width: deviceWidth * 0.4,
-              ),
-              SizedBox(height: deviceHeight * 0.01),
-              Text(
-                'Welcome to Healthy',
-                style: TextStyle(
-                  fontSize: deviceHeight * 0.04,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Timed New Roman',
-                  color: Colors.lightBlue[900],
-=======
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
@@ -43,7 +20,6 @@ class Home_Page extends StatelessWidget {
               children: [
                 Container(
                   child: Lottie.asset('images/Main_1.json'),
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                 ),
                 SizedBox(height: deviceHeight * 0.02),
                 ShaderMask(

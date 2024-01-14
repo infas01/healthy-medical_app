@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
 class SimpleChatApp extends StatelessWidget {
   const SimpleChatApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
-        debugShowCheckedModeBanner: false,
-    
-=======
       debugShowCheckedModeBanner: false,
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
       home: ChatScreen(),
     );
   }
@@ -53,12 +44,8 @@ class _ChatScreenState extends State<ChatScreen> {
           "Yeah",
         ];
 
-<<<<<<< HEAD
-        final randomIndex = DateTime.now().millisecondsSinceEpoch % receivedMessages.length;
-=======
         final randomIndex =
             DateTime.now().millisecondsSinceEpoch % receivedMessages.length;
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
         _receiveMessage(receivedMessages[randomIndex]);
       });
     }
@@ -73,25 +60,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-       backgroundColor: Colors.white,
-      appBar: AppBar(
-        
-  backgroundColor: const Color.fromARGB(255, 17, 110, 187),
-  title: const Text(
-    "ChatView",
-    style: TextStyle(
-      fontSize: 18,
-      letterSpacing: 1,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-  ),
-  
-  leading: Container(
-    margin: const EdgeInsets.only(left: 18.0),
-     child: const CircleAvatar(
-=======
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 17, 110, 187),
@@ -107,59 +75,21 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: Container(
           margin: const EdgeInsets.only(left: 18.0),
           child: const CircleAvatar(
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
             backgroundColor: Colors.transparent,
             radius: 25.0, // Radius of the CircleAvatar
             child: Image(
               height: 40.0, // Adjust the height as needed
               width: 40.0, // Adjust the width as needed
               image: AssetImage(
-<<<<<<< HEAD
-                "assets/image/dp.png",
-=======
                 "assets/image/Clinic.jpg",
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
               ),
               fit: BoxFit.cover, // Make the image cover the available space
             ),
           ),
-<<<<<<< HEAD
-  ),
-  toolbarHeight: 70,
-  elevation: 5,
-  actions: [
-    Container(
-      margin: const EdgeInsets.only(right: 18.0, left: 18.0),
-      child: const Icon(
-        Icons.call_sharp,
-        size: 25.0,
-        color: Colors.pinkAccent,
-      ),
-    ),
-    Container(
-      margin: const EdgeInsets.only(right: 18.0, left: 18.0),
-      child: const Icon(
-        Icons.video_call_rounded,
-        size: 25.0,
-        color: Colors.cyanAccent,
-      ),
-    ),
-    Container(
-      margin: const EdgeInsets.only(right: 18.0, left: 18.0),
-      child: const Icon(
-        Icons.menu,
-        size: 25.0,
-        color: Colors.amber,
-      ),
-    ),
-  ],
-),
-=======
         ),
         toolbarHeight: 70,
         elevation: 5,
       ),
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
       body: Column(
         children: [
           Expanded(
@@ -168,39 +98,6 @@ class _ChatScreenState extends State<ChatScreen> {
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Align(
-<<<<<<< HEAD
-                    alignment: _messages[index].isSent ? Alignment.centerRight : Alignment.centerLeft,
-                    child: Container(
-                //        height: 50,
-                // width: 170,
-                margin: const EdgeInsets.fromLTRB(12, 15, 12, 5),
-                padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: _messages[index].isSent ? Colors.blue[50] :  const Color.fromARGB(255, 17, 110, 187),
-                        borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(15.0),
-                    topRight: Radius.circular(15.0),
-                    topLeft: Radius.circular(15.0),
-                    bottomLeft: Radius.circular(15.0),
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 3,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                      ),
-                      child: Text(_messages[index].text,
-                        textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: _messages[index].isSent ? Colors.black : Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.normal,
-                  ),),
-                      
-=======
                     alignment: _messages[index].isSent
                         ? Alignment.centerRight
                         : Alignment.centerLeft,
@@ -239,7 +136,6 @@ class _ChatScreenState extends State<ChatScreen> {
                           fontWeight: FontWeight.normal,
                         ),
                       ),
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                     ),
                   ),
                 );
@@ -247,18 +143,6 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           Padding(
-<<<<<<< HEAD
-            
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-                children: [
-                  IconButton(icon: Icon(Icons.emoji_emotions_rounded , color: Colors.pinkAccent),
-                  onPressed: (){},),
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: InputDecoration(labelText: 'Send a message...',
-=======
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
@@ -272,19 +156,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     controller: _messageController,
                     decoration: InputDecoration(
                       labelText: 'Send a message...',
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                     ),
                   ),
                 ),
                 IconButton(
-<<<<<<< HEAD
-                  icon: Icon(Icons.send , color: Colors.blueAccent,),
-=======
                   icon: Icon(
                     Icons.send,
                     color: Colors.blueAccent,
                   ),
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                   onPressed: () {
                     _sendMessage(_messageController.text);
                   },

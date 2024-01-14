@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import 'dart:convert';
-=======
 import 'package:lottie/lottie.dart';
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
 
 import '../Animation/animation.dart';
 import '../constant.dart';
@@ -18,13 +15,11 @@ class Signup_Page extends StatefulWidget {
 }
 
 class _Signup_PageState extends State<Signup_Page> {
-
-   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
- 
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 1;
   @override
@@ -64,55 +59,6 @@ class _Signup_PageState extends State<Signup_Page> {
                             ),
                             Column(
                               children: [
-<<<<<<< HEAD
-                                Container(
-                                  //color: Colors.amber,
-                                  height: (70.0 + adjustWidth),
-                                  width: deviceWidth * 0.65,
-                                  child: TopAnime(
-                                    2,
-                                    30,
-                                    child: ListView.builder(
-                                      itemCount: options.length,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              selectedIndex = index;
-                                            });
-                                          },
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.fromLTRB(
-                                                    25.0, 0.0, 20.0, 0.0),
-                                                child: Text(
-                                                  options[index],
-                                                  style: TextStyle(
-                                                    color:
-                                                        selectedIndex == index
-                                                            ? Colors.black
-                                                            : Colors.grey,
-                                                    fontSize: adjustWidth,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                height: 2.5,
-                                              ),
-                                              selectedIndex == index
-                                                  ? Padding(
-                                                      padding: const EdgeInsets
-                                                          .fromLTRB(0, 2, 0, 0),
-                                                      child: Container(
-                                                        height: 3,
-                                                        width: (10.0 +
-                                                            adjustWidth),
-                                                        color: Colors.black,
-=======
                                 Row(
                                   children: [
                                     Container(
@@ -152,7 +98,6 @@ class _Signup_PageState extends State<Signup_Page> {
                                                         fontSize: adjustWidth,
                                                         fontWeight:
                                                             FontWeight.bold,
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                                                       ),
                                                     ),
                                                   ),
@@ -207,23 +152,6 @@ class _Signup_PageState extends State<Signup_Page> {
                                     )
                                   ],
                                 ),
-<<<<<<< HEAD
-                                Expanded(
-                                    child: Container(
-                                        //color: Colors.red,
-                                        )),
-                                RightAnime(
-                                  1,
-                                  (adjustWidth),
-                                  child: Container(
-                                    margin: const EdgeInsets.only(top: 5),
-                                    width: 70,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.green[50],
-                                    ),
-=======
                                 SizedBox(
                                   height: 10.0 + adjustHeight,
                                 ),
@@ -235,15 +163,10 @@ class _Signup_PageState extends State<Signup_Page> {
                                     1,
                                     5,
                                     curve: Curves.fastOutSlowIn,
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-<<<<<<< HEAD
-                                        Image.asset(
-                                          'images/Healthy_Logo_R.png',
-=======
                                         Text("Hello!",
                                             style: TextStyle(
                                               fontSize: 15.0 + adjustWidth,
@@ -257,7 +180,6 @@ class _Signup_PageState extends State<Signup_Page> {
                                           style: TextStyle(
                                             fontSize: adjustWidth - 5.0,
                                           ),
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                                         ),
                                       ],
                                     ),
@@ -407,194 +329,6 @@ class _Signup_PageState extends State<Signup_Page> {
                                 )
                               ],
                             ),
-<<<<<<< HEAD
-                            SizedBox(
-                              height: 10.0 + adjustHeight,
-                            ),
-                            Container(
-                              //color: Colors.yellow,
-                              padding: const EdgeInsets.only(left: 25),
-                              width: deviceWidth,
-                              child: TopAnime(
-                                1,
-                                5,
-                                curve: Curves.fastOutSlowIn,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("Hello!",
-                                        style: TextStyle(
-                                          fontSize: 15.0 + adjustWidth,
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    SizedBox(
-                                      height: adjustHeight,
-                                    ),
-                                    Text(
-                                      'Enter your details to create an account',
-                                      style: TextStyle(
-                                        fontSize: adjustWidth - 5.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5.0 + adjustHeight,
-                            ),
-                            SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding:
-                                      const EdgeInsets.only(left: 25, right: 25),
-                                  //color: Colors.red[200],
-                                  width: deviceWidth,
-                                  height: 500.0 + adjustHeight,
-                                  child: TopAnime(
-                                    1,
-                                    5,
-                                    curve: Curves.easeInExpo,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        TextField(
-                                          controller: _nameController,
-                                            cursorColor: Colors.black,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Username")),
-
-                                        SizedBox(
-                                          height: 10.0 + adjustHeight,
-                                        ),
-                                         TextField(
-                                          controller: _emailController,
-                                          cursorColor: Colors.black,
-                                          style:
-                                              const TextStyle(color: Colors.black),
-                                          showCursor: true,
-                                          decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Email")),
-                    
-                                        SizedBox(
-                                          height: 10.0 + adjustHeight,
-                                        ),
-                                        TextField(
-                                          controller: _passwordController,
-                                            cursorColor: Colors.black,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Password")),
-                                        SizedBox(
-                                          height: 15.0 + adjustHeight,
-                                        ),
-                                        TextField(
-                                          controller: _ageController,
-                                            cursorColor: Colors.black,
-                                            style: const TextStyle(
-                                                color: Colors.black),
-                                            showCursor: true,
-                                            decoration:
-                                                textFiledInputDecoration
-                                                    .copyWith(
-                                                        labelText:
-                                                            "Age")),
-                                        SizedBox(
-                                          height: 15.0 + adjustHeight,
-                                        ),
-                                        // TopAnime(
-                                        //   1,
-                                        //   5,
-                                        //   child: Row(
-                                        //     children: [
-                                        //       // IconButton(
-                                        //       //   // icon: FaIcon(
-                                        //       //   //   FontAwesomeIcons.facebookF,
-                                        //       //   //   size: 30,
-                                        //       //   // ),
-                                        //       //   onPressed: () {},
-                                        //       // ),
-                                        //       SizedBox(
-                                        //         width: 15,
-                                        //       ),
-                                        //       // IconButton(
-                                        //       //   // icon: FaIcon(
-                                        //       //   //     FontAwesomeIcons
-                                        //       //   //         .googlePlusG,
-                                        //       //   //     size: 35),
-                                        //       //   onPressed: () {},
-                                        //       // ),
-                                        //     ],
-                                        //   ),
-                                        // )
-
-                                        Container(
-                                          //color: Colors.grey[300],
-                                          alignment: Alignment.center,
-                                          margin: const EdgeInsets.only(top: 30),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              _postData();
-                                                  
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                  color:
-                                                      Colors.lightBlue[900],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              width: deviceWidth * 0.60,
-                                              height: 50,
-                                              child: const Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Create an Account',
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 20.0),
-                                                  ),
-                                                  // Padding(
-                                                  //     padding:
-                                                  //         EdgeInsets.only(
-                                                  //             right: 10)),
-                                                  // Icon(
-                                                  //   Icons.arrow_forward,
-                                                  //   size: 20.0,
-                                                  //   color: Colors.white,
-                                                  // ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ),
-=======
->>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                           ],
                         ),
                       ),
@@ -607,82 +341,72 @@ class _Signup_PageState extends State<Signup_Page> {
     );
   }
 
-
-
-  
-Future<void> _postData() async {
+  Future<void> _postData() async {
     final String name = _nameController.text;
     final String password = _passwordController.text;
     final int age = int.tryParse(_ageController.text) ?? 0;
     final String email = _emailController.text;
 
     final dio = Dio();
-    dio.options.headers['Authorization'] = 'Basic ${base64Encode(utf8.encode('asam:8385'))}';
+    dio.options.headers['Authorization'] =
+        'Basic ${base64Encode(utf8.encode('asam:8385'))}';
 
- 
-      final response = await dio.post(
-        'http://10.0.2.2:8080/', // Replace with your actual port if it's different
-        data: {
-          'name': name,
-          'email': email,
-          'password': password,
-          'age': age,
-          
+    final response = await dio.post(
+      'http://10.0.2.2:8080/', // Replace with your actual port if it's different
+      data: {
+        'name': name,
+        'email': email,
+        'password': password,
+        'age': age,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('You have successfully registered!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login_Page()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Registration Successful'),
+            content: Text('You have successfully registered!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  // Navigate to login page or perform any other action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login_Page()),
+                  );
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
         },
       );
 
-  if (response.statusCode == 200) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return  AlertDialog(
-              title: Text('Registration Successful'),
-              content: Text('You have successfully registered!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // Navigate to login page or perform any other action
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login_Page()),
-                    );
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-      } else {
-
-          showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return  AlertDialog(
-              title: Text('Registration Successful'),
-              content: Text('You have successfully registered!'),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    // Navigate to login page or perform any other action
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login_Page()),
-                    );
-                  },
-                  child: Text('OK'),
-                ),
-              ],
-            );
-          },
-        );
-
-        print('Error: ${response.data}');
-      }
-    
+      print('Error: ${response.data}');
+    }
   }
-
-
-
-
 }
