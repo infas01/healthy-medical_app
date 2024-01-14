@@ -30,6 +30,7 @@ class _MyAppState extends State<Medreminder> {
       child: Sizer(builder: (context, orientation, deviceType) {
         return MaterialApp(
           title: 'Pill Reminder',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData.dark().copyWith(
             primaryColor: kPrimaryColor,
             scaffoldBackgroundColor: kScaffoldColor,

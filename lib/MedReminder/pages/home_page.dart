@@ -35,7 +35,6 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-            //the widget take space as per need
             const Flexible(
               child: BottomContainer(),
             ),
@@ -44,7 +43,6 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: InkResponse(
         onTap: () {
-          // go to new entry page
           Navigator.push(
             context,
             MaterialPageRoute(

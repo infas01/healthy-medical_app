@@ -39,11 +39,15 @@ class _Signup_PageState extends State<Signup_Page> {
                             right: 2, left: 2, top: 1, bottom: 1),
                         child: Stack(
                           children: [
-                            Transform.rotate(
-                              angle: 180 * (3.141592653589793 / 180),
-                              child: Lottie.asset(
-                                'images/Animation_1.json',
-                                height: 500,
+                            Container(
+                              //color: Colors.blue,
+                              width: deviceWidth,
+                              child: Transform.rotate(
+                                angle: 180 * (3.141592653589793 / 180),
+                                child: Lottie.asset(
+                                  'images/Animation_1.json',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Column(

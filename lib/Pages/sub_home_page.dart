@@ -4,7 +4,6 @@ import 'package:healthy/Pages/booking_page.dart';
 import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/clinicchat/clinic_chat.dart';
 import 'package:lottie/lottie.dart';
-import 'history_page.dart';
 
 class SubHomePage extends StatelessWidget {
   const SubHomePage({Key? key});
@@ -125,19 +124,31 @@ class SubHomePage extends StatelessWidget {
               child: imageList,
             ),
             SizedBox(
-              height: 20.0,
+              height: 10.0,
             ),
             Container(
               //color: Colors.blue[200],
+              height: 500,
               child: Stack(
                 children: [
-                  Lottie.asset(
-                    'images/Animation_2.json',
-                    height: 500,
+                  Container(
+                    //color: Colors.blue,
+                    width: _deviceWidth,
+                    child: Lottie.asset(
+                      'images/Animation_2.json',
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  Lottie.asset(
-                    'images/Animation_2.json',
-                    height: 500,
+                  Container(
+                    //color: Colors.blue,
+                    width: _deviceWidth,
+                    child: Transform.rotate(
+                      angle: 45 * (3.141592653589793 / 180),
+                      child: Lottie.asset(
+                        'images/Animation_4.json',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                   Column(
                     children: [
