@@ -351,8 +351,10 @@ class _Login_PageState extends State<Login_Page> {
             actions: [
               TextButton(
                 onPressed: () {
+
+                  Navigator.pop(context,true);
                   // Navigate to login page or perform any other action
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => NavBarRoots()),
                   );

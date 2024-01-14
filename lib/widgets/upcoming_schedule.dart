@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 
-class UpcomingSchedule extends StatelessWidget {
-  const UpcomingSchedule({super.key});
+
+class UpcomingSchedule extends StatefulWidget {
+  const UpcomingSchedule({Key? key}) : super(key: key);
 
   @override
+  State<UpcomingSchedule> createState() => _UpcomingScheduleState();
+}
+
+class _UpcomingScheduleState extends State<UpcomingSchedule> {
+ 
+  
+@override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Upcoming Schedule"),
+      ),
+     body: SingleChildScrollView(
+      child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -461,6 +474,18 @@ class UpcomingSchedule extends StatelessWidget {
           ),
         ],
       ),
+      ), 
+     ),
     );
   }
+
+
 }
+
+
+
+
+
+
+
+
