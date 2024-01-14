@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:healthy/widgets/navbar_roots.dart';
-
+import 'package:lottie/lottie.dart';
 import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:flutter/material.dart';
@@ -138,6 +138,12 @@ class _Login_PageState extends State<Login_Page> {
                               SizedBox(
                                 height: 10.0 + adjustHeight,
                               ),
+                              Center(
+                                child: Container(
+                                    //color: Colors.blue,
+                                    height: 250,
+                                    child: Lottie.asset('images/Login.json')),
+                              ),
                               Container(
                                 //color: Colors.yellow,
                                 padding: const EdgeInsets.only(left: 25),
@@ -172,7 +178,7 @@ class _Login_PageState extends State<Login_Page> {
                                           left: 25, right: 25),
                                       //color: Colors.red[200],
                                       width: deviceWidth,
-                                      height: 230.0 + adjustHeight,
+                                      height: 300.0 + adjustHeight,
                                       child: TopAnime(
                                         1,
                                         5,
@@ -247,8 +253,8 @@ class _Login_PageState extends State<Login_Page> {
                                                           BorderRadius.circular(
                                                               10)),
                                                   width: deviceWidth * 0.35,
-                                                  height: 50,
-                                                  child: const Row(
+                                                  height: 40,
+                                                  child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .center,
@@ -259,20 +265,40 @@ class _Login_PageState extends State<Login_Page> {
                                                             color: Colors.white,
                                                             fontSize: 20.0),
                                                       ),
-                                                      // Padding(
-                                                      //     padding:
-                                                      //         EdgeInsets.only(
-                                                      //             right: 10)),
-                                                      // Icon(
-                                                      //   Icons.arrow_forward,
-                                                      //   size: 20.0,
-                                                      //   color: Colors.white,
-                                                      // ),
                                                     ],
                                                   ),
                                                 ),
                                               ),
                                             ),
+                                            selectedIndex == 0
+                                                ? TopAnime(
+                                                    2,
+                                                    3,
+                                                    curve: Curves.fastOutSlowIn,
+                                                    child: Container(
+                                                      //color: Colors.red,
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      margin: EdgeInsets.only(
+                                                          top: 0,
+                                                          left: 5,
+                                                          bottom: 10),
+                                                      height:
+                                                          deviceHeight * 0.05,
+                                                      child: Text(
+                                                        "Forgot Password?",
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .grey[800],
+                                                            fontSize:
+                                                                adjustWidth - 5,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Signup_Page()
                                           ],
                                         ),
                                       ),
@@ -283,27 +309,6 @@ class _Login_PageState extends State<Login_Page> {
                             ],
                           ),
                         ),
-                        selectedIndex == 0
-                            ? TopAnime(
-                                2,
-                                5,
-                                curve: Curves.fastOutSlowIn,
-                                child: Container(
-                                  //color: Colors.red,
-                                  alignment: Alignment.centerLeft,
-                                  margin: const EdgeInsets.only(
-                                      left: 25, bottom: 10),
-                                  height: deviceHeight * 0.05,
-                                  child: Text(
-                                    "Forgot Password?",
-                                    style: TextStyle(
-                                        color: Colors.grey[800],
-                                        fontSize: adjustWidth - 5,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                                ),
-                              )
-                            : const Signup_Page()
                       ],
                     ),
                   )

@@ -3,9 +3,7 @@ import 'package:healthy/Pages/booking_page.dart';
 import 'package:healthy/Pages/profile.dart';
 import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/Pages/sub_home_page.dart';
-import '../Pages/schedule_screen.dart';
 
-// ignore: use_key_in_widget_constructors
 class NavBarRoots extends StatefulWidget {
   @override
   State<NavBarRoots> createState() => _NavBarRootsState();
@@ -25,7 +23,6 @@ class _NavBarRootsState extends State<NavBarRoots> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: _screens[_selectedIndex],
-      // ignore: sized_box_for_whitespace
       bottomNavigationBar: Container(
         height: 80,
         child: BottomNavigationBar(
@@ -43,7 +40,6 @@ class _NavBarRootsState extends State<NavBarRoots> {
               _selectedIndex = index;
             });
           },
-          // ignore: prefer_const_literals_to_create_immutables
           items: [
             const BottomNavigationBarItem(
                 icon: Icon(Icons.home), label: "Home"),

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import './secondscreen.dart';
 import './widgets/chat_tile.dart';
 import './statuscsreen.dart';
+=======
+import './widgets/chat_tile.dart';
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
 
 class ChatListView extends StatelessWidget {
   const ChatListView({super.key});
@@ -12,7 +16,11 @@ class ChatListView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 17, 110, 187),
         title: const Text(
+<<<<<<< HEAD
           "Chattie",
+=======
+          "Clinic Centers",
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
           style: TextStyle(
             fontSize: 18,
             letterSpacing: 2,
@@ -21,6 +29,7 @@ class ChatListView extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+<<<<<<< HEAD
         centerTitle: true, // Aligns the title text to the center
         toolbarHeight: 70,
         elevation: 0,
@@ -115,10 +124,20 @@ class ChatListView extends StatelessWidget {
             ),
           ),
           const Expanded(
+=======
+        centerTitle: true,
+        toolbarHeight: 80,
+        elevation: 0,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   ChatTile(
+<<<<<<< HEAD
                       name: "Fabeeha College", msg: "Okay", time: "4:00PM",img: "assets/image/picture.png"),
                   ChatTile(
                       name: "Atika Cousin", msg: "Alright!", time: "2:00PM" , img: "assets/image/women.png"),
@@ -154,12 +173,44 @@ class ChatListView extends StatelessWidget {
                    
 
                  
+=======
+                      name: "Clinic 1",
+                      msg: "Okay",
+                      time: "4:00PM",
+                      img: "assets/image/Clinic.jpg"),
+                  ChatTile(
+                      name: "Clinic 2",
+                      msg: "Thank You",
+                      time: "2:00PM",
+                      img: "assets/image/Clinic.jpg"),
+                  ChatTile(
+                      name: "Clinic 3",
+                      msg: "What are your symptoms?",
+                      time: "3:00PM",
+                      img: "assets/image/Clinic.jpg"),
+                  ChatTile(
+                      name: "Clinic 4",
+                      msg: "Okay",
+                      time: "6:00PM",
+                      img: "assets/image/Clinic.jpg"),
+                  ChatTile(
+                      name: "Clinic 5",
+                      msg: "~ Sent A Photo",
+                      time: "9:00PM",
+                      img: "assets/image/Clinic.jpg"),
+                  ChatTile(
+                      name: "Clinic 6",
+                      msg: "Okay",
+                      time: "4:00PM",
+                      img: "assets/image/Clinic.jpg"),
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
                 ],
               ),
             ),
           ),
         ],
       ),
+<<<<<<< HEAD
       floatingActionButton: Container(
         width: 60,
         height: 60,
@@ -186,6 +237,8 @@ class ChatListView extends StatelessWidget {
           color: Colors.amberAccent,
         ),
       ),
+=======
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
     );
   }
 }

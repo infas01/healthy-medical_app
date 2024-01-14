@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+<<<<<<< HEAD
+=======
+import 'package:healthy/widgets/navbar_roots.dart';
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
 import '/MedReminder/constants.dart';
 import '/MedReminder/global_bloc.dart';
 import '/MedReminder/models/medicine.dart';
@@ -14,7 +18,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(),
+=======
+      appBar: AppBar(
+        title: Text('Medication'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NavBarRoots()),
+            );
+          },
+        ),
+      ),
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
       body: Padding(
         padding: EdgeInsets.all(2.h),
         child: Column(
@@ -23,7 +42,10 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
+<<<<<<< HEAD
             //the widget take space as per need
+=======
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
             const Flexible(
               child: BottomContainer(),
             ),
@@ -32,7 +54,10 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: InkResponse(
         onTap: () {
+<<<<<<< HEAD
           // go to new entry page
+=======
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
           Navigator.push(
             context,
             MaterialPageRoute(

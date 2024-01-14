@@ -4,7 +4,10 @@ import './constants.dart';
 import './global_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+<<<<<<< HEAD
 
+=======
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
 import 'pages/home_page.dart';
 
 class Medreminder extends StatefulWidget {
@@ -31,11 +34,18 @@ class _MyAppState extends State<Medreminder> {
       child: Sizer(builder: (context, orientation, deviceType) {
         return MaterialApp(
           title: 'Pill Reminder',
+<<<<<<< HEAD
           //theme customization
           theme: ThemeData.dark().copyWith(
             primaryColor: kPrimaryColor,
             scaffoldBackgroundColor: kScaffoldColor,
             //appbar theme
+=======
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            primaryColor: kPrimaryColor,
+            scaffoldBackgroundColor: kScaffoldColor,
+>>>>>>> bec0b0932bcc32c18feb5f7d5a42075e0155e314
             appBarTheme: AppBarTheme(
               toolbarHeight: 7.h,
               backgroundColor: kScaffoldColor,
