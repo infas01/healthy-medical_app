@@ -48,22 +48,16 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     children: [
-                      const Row(
+                      Row(
                         children: [
-                          SizedBox(
-                            width: 40,
-                            height: 5,
-                          ),
+                          SizedBox(width: 40, height: 5),
                           Text(
                             "Dr. Doctor Name", // 1.report name
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
-                            width: 120,
-                            height: 5,
-                          ),
+                          SizedBox(width: 120, height: 5),
                           Row(
                             children: [
                               Icon(
@@ -84,17 +78,15 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: Divider(
-                          // color: Colors.black,
                           thickness: 1,
                           height: 20,
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
                         child: CircleAvatar(
                           radius: 100,
-                          backgroundImage: AssetImage(
-                              "images/doctor1.jpg"), // medical reportimage
+                          backgroundImage: AssetImage("images/doctor1.jpg"),
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -111,12 +103,14 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: const Center(
-                                  child: Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              )),
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
+                          const SizedBox(height: 10),
                         ],
                       ),
                       const SizedBox(height: 10),
