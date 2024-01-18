@@ -20,15 +20,16 @@ class _MedicineDetailsState extends State<MedicineDetails> {
     final GlobalBloc _globalBloc = Provider.of<GlobalBloc>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text('Details'),
       ),
       body: Padding(
         padding: EdgeInsets.all(2.h),
-        child: Column(
+      child: Column(
           children: [
             MainSection(medicine: widget.medicine),
             ExtendedSection(medicine: widget.medicine),
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: 100.w,
               height: 7.h,

@@ -14,8 +14,8 @@ class _NavBarRootsState extends State<NavBarRoots> {
   final _screens = [
     const SubHomePage(),
    // LetsTalkScreen(),
-    const BookingPage(),
     const Profile(),
+    const BookingPage(),
   ];
 
   @override
@@ -46,7 +46,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
             const BottomNavigationBarItem(
                 icon: Icon(Icons.verified_user), label: "Profile"),
             const BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
+                icon: Icon(Icons.book), label: "Booking"),
           ],
         ),
       ),

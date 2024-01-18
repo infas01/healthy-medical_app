@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class TopAnime extends StatelessWidget {
-  //const TopAnime({super.key});
+   // const TopAnime({super.key});
 
   Widget? child;
   Curve? curve;

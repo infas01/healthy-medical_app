@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:healthy/medicalreport/addrep.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class UpcomingSchedule extends StatefulWidget {
   const UpcomingSchedule({Key? key}) : super(key: key);
@@ -9,13 +11,38 @@ class UpcomingSchedule extends StatefulWidget {
 }
 
 class _UpcomingScheduleState extends State<UpcomingSchedule> {
+  List<MedicalReport> medicalReports = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchMedicalReports();
+  }
+
+  Future<void> fetchMedicalReports() async {
+    final response = await http.get(Uri.parse('http://10.0.2.2:8080/mr/all'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        medicalReports =
+            data.map((json) => MedicalReport.fromJson(json)).toList();
+      });
+    } else {
+      // Handle error
+      print('Failed to load medical reports');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Medical Reports"),
+        backgroundColor: Colors.black,
+        title: Text('Medical Reports'),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
         onPressed: () {
           Navigator.push(
             context,
@@ -24,105 +51,41 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
         },
         child: const Icon(Icons.add),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 15),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 4,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(width: 40, height: 5),
-                          Text(
-                            "Dr. Doctor Name", // 1.report name
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 120, height: 5),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.access_time_filled,
-                                color: Colors.black54,
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                "10:30 AM", // add time
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Divider(
-                          thickness: 1,
-                          height: 20,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: CircleAvatar(
-                          radius: 100,
-                          backgroundImage: AssetImage("images/doctor1.jpg"),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              width: 150,
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF7165D6),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.delete,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-            ],
-          ),
-        ),
+      body: ListView.builder(
+        itemCount: medicalReports.length,
+        itemBuilder: (context, index) {
+          final report = medicalReports[index];
+          return ListTile(
+            title: Text(report.title),
+            subtitle: Text('Patient ID: ${report.userId}'),
+            // Display the image here, you might need to decode the base64Image
+            // For simplicity, we are just displaying the base64Image string
+            leading: Image.memory(
+              base64.decode(report.base64Image),
+              width: 50,
+              height: 50,
+            ),
+            // Add more details as needed
+          );
+        },
       ),
+    );
+  }
+}
+
+class MedicalReport {
+  final String title;
+  final String userId;
+  final String base64Image;
+
+  MedicalReport(
+      {required this.title, required this.userId, required this.base64Image});
+
+  factory MedicalReport.fromJson(Map<String, dynamic> json) {
+    return MedicalReport(
+      title: json['title'],
+      userId: json['userId'],
+      base64Image: json['base64Img'],
     );
   }
 }

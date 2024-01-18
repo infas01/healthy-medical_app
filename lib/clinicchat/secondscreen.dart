@@ -36,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
       _messageController.clear();
 
       // Simulate a received message after a brief delay
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         final receivedMessages = [
           "Hello!.",
           "Yes!",
@@ -147,20 +147,20 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Row(
               children: [
                 IconButton(
-                  icon: Icon(Icons.emoji_emotions_rounded,
+                  icon: const Icon(Icons.emoji_emotions_rounded,
                       color: Colors.pinkAccent),
                   onPressed: () {},
                 ),
                 Expanded(
                   child: TextField(
                     controller: _messageController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Send a message...',
                     ),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.send,
                     color: Colors.blueAccent,
                   ),

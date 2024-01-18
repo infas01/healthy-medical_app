@@ -16,9 +16,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Medication'),
+        backgroundColor: Colors.black,
+        title: const Text('Medication'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.push(
               context,
@@ -54,8 +55,8 @@ class HomePage extends StatelessWidget {
           width: 18.w,
           height: 9.h,
           child: Card(
-            color: kPrimaryColor,
-            shape: BeveledRectangleBorder(
+            color: Colors.black,
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(3.h),
             ),
             child: Icon(
@@ -85,19 +86,12 @@ class TopContainer extends StatelessWidget {
             bottom: 1.h,
           ),
           child: Text(
-            'Worry less. \nLive healthier.',
+            'Worry less. \nLive healthier \nWith health.',
             textAlign: TextAlign.start,
             style: Theme.of(context).textTheme.headline4,
           ),
         ),
-        Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.only(bottom: 1.h),
-          child: Text(
-            'Welcome to Daily Dose.',
-            style: Theme.of(context).textTheme.titleSmall,
-          ),
-        ),
+
         SizedBox(
           height: 2.h,
         ),

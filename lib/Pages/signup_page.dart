@@ -1,11 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:lottie/lottie.dart';
-
 import '../Animation/animation.dart';
 import '../constant.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import './login_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Signup_Page extends StatefulWidget {
   const Signup_Page({super.key});
@@ -19,6 +20,20 @@ class _Signup_PageState extends State<Signup_Page> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+
+  TextEditingController titleController = TextEditingController();
+  String imagePath = '';
+
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      setState(() {
+        imagePath = pickedImage.path;
+      });
+    }
+  }
 
   var options = ['Login', 'Sign Up'];
   var selectedIndex = 1;
@@ -83,7 +98,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.fromLTRB(
+                                                        const EdgeInsets.fromLTRB(
                                                             25.0,
                                                             0.0,
                                                             20.0,
@@ -101,7 +116,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 2.5,
                                                   ),
                                                   selectedIndex == index
@@ -133,7 +148,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                       1,
                                       (adjustWidth),
                                       child: Container(
-                                        margin: EdgeInsets.only(top: 5),
+                                        margin: const EdgeInsets.only(top: 5),
                                         width: 70,
                                         height: 100,
                                         decoration: BoxDecoration(
@@ -157,7 +172,7 @@ class _Signup_PageState extends State<Signup_Page> {
                                 ),
                                 Container(
                                   //color: Colors.yellow,
-                                  padding: EdgeInsets.only(left: 25),
+                                  padding: const EdgeInsets.only(left: 25),
                                   width: deviceWidth,
                                   child: TopAnime(
                                     1,
@@ -167,18 +182,24 @@ class _Signup_PageState extends State<Signup_Page> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text("Hello!",
-                                            style: TextStyle(
-                                              fontSize: 15.0 + adjustWidth,
-                                              fontWeight: FontWeight.w500,
-                                            )),
-                                        SizedBox(
-                                          height: adjustHeight,
-                                        ),
-                                        Text(
-                                          'Enter your details to create an account',
-                                          style: TextStyle(
-                                            fontSize: adjustWidth - 5.0,
+                                        Center(
+                                          child: GestureDetector(
+                                            onTap: pickImage,
+                                            child: CircleAvatar(
+                                              radius: 70,
+                                              backgroundColor: Colors.black,
+                                              backgroundImage: imagePath
+                                                      .isNotEmpty
+                                                  ? FileImage(File(imagePath))
+                                                  : null,
+                                              child: imagePath.isNotEmpty
+                                                  ? null
+                                                  : const Icon(
+                                                      Icons.camera_alt,
+                                                      size: 40,
+                                                      color: Colors.white,
+                                                    ),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -194,11 +215,11 @@ class _Signup_PageState extends State<Signup_Page> {
                                   child: Column(
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             left: 25, right: 25),
                                         //color: Colors.red[200],
                                         width: deviceWidth,
-                                        height: 400.0 + adjustHeight,
+                                        height: 500.0 + adjustHeight,
                                         child: TopAnime(
                                           1,
                                           5,
@@ -208,8 +229,9 @@ class _Signup_PageState extends State<Signup_Page> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               TextField(
+                                                  controller: _nameController,
                                                   cursorColor: Colors.black,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       color: Colors.black),
                                                   showCursor: true,
                                                   decoration:
@@ -217,13 +239,13 @@ class _Signup_PageState extends State<Signup_Page> {
                                                           .copyWith(
                                                               labelText:
                                                                   "Username")),
-
                                               SizedBox(
                                                 height: 10.0 + adjustHeight,
                                               ),
                                               TextField(
+                                                controller: _emailController,
                                                 cursorColor: Colors.black,
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     color: Colors.black),
                                                 showCursor: true,
                                                 decoration:
@@ -233,8 +255,10 @@ class _Signup_PageState extends State<Signup_Page> {
                                                 height: 10.0 + adjustHeight,
                                               ),
                                               TextField(
+                                                  controller:
+                                                      _passwordController,
                                                   cursorColor: Colors.black,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       color: Colors.black),
                                                   showCursor: true,
                                                   decoration:
@@ -245,56 +269,44 @@ class _Signup_PageState extends State<Signup_Page> {
                                               SizedBox(
                                                 height: 15.0 + adjustHeight,
                                               ),
-                                              // TopAnime(
-                                              //   1,
-                                              //   5,
-                                              //   child: Row(
-                                              //     children: [
-                                              //       // IconButton(
-                                              //       //   // icon: FaIcon(
-                                              //       //   //   FontAwesomeIcons.facebookF,
-                                              //       //   //   size: 30,
-                                              //       //   // ),
-                                              //       //   onPressed: () {},
-                                              //       // ),
-                                              //       SizedBox(
-                                              //         width: 15,
-                                              //       ),
-                                              //       // IconButton(
-                                              //       //   // icon: FaIcon(
-                                              //       //   //     FontAwesomeIcons
-                                              //       //   //         .googlePlusG,
-                                              //       //   //     size: 35),
-                                              //       //   onPressed: () {},
-                                              //       // ),
-                                              //     ],
-                                              //   ),
-                                              // )
-
+                                              TextField(
+                                                  controller: _ageController,
+                                                  cursorColor: Colors.black,
+                                                  style: const TextStyle(
+                                                      color: Colors.black),
+                                                  showCursor: true,
+                                                  decoration:
+                                                      textFiledInputDecoration
+                                                          .copyWith(
+                                                              labelText:
+                                                                  "Age")),
+                                              SizedBox(
+                                                height: 15.0 + adjustHeight,
+                                              ),
                                               Container(
-                                                //color: Colors.grey[300],
+                                                // color: Colors.grey[300],
                                                 alignment: Alignment.center,
-                                                margin:
-                                                    EdgeInsets.only(top: 10),
+                                                margin: const EdgeInsets.only(
+                                                    top: 10),
                                                 child: GestureDetector(
                                                   onTap: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              Login_Page(),
-                                                        ));
+                                                    if (imagePath.isNotEmpty) {
+                                                      _postData();
+                                                    } else {
+                                                      // Handle the case when imagePath is empty
+                                                      // You may want to show a message or take some other action
+                                                    }
                                                   },
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                        color: Colors
-                                                            .lightBlue[900],
+                                                        color: const Color.fromARGB(
+                                                            255, 0, 0, 0),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(10)),
                                                     width: deviceWidth * 0.60,
                                                     height: 50,
-                                                    child: Row(
+                                                    child: const Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .center,
@@ -350,6 +362,8 @@ class _Signup_PageState extends State<Signup_Page> {
     final dio = Dio();
     dio.options.headers['Authorization'] =
         'Basic ${base64Encode(utf8.encode('asam:8385'))}';
+    print(base64Encode(File(imagePath).readAsBytesSync()));
+    var image = base64Encode(File(imagePath).readAsBytesSync());
 
     final response = await dio.post(
       'http://10.0.2.2:8080/', // Replace with your actual port if it's different
@@ -358,6 +372,7 @@ class _Signup_PageState extends State<Signup_Page> {
         'email': email,
         'password': password,
         'age': age,
+        'image': image,
       },
     );
 
@@ -366,8 +381,8 @@ class _Signup_PageState extends State<Signup_Page> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('You have successfully registered!'),
+            title: const Text('Registration Successful'),
+            content: const Text('You have successfully registered!'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -377,7 +392,7 @@ class _Signup_PageState extends State<Signup_Page> {
                     MaterialPageRoute(builder: (context) => const Login_Page()),
                   );
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -388,8 +403,8 @@ class _Signup_PageState extends State<Signup_Page> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('You have successfully registered!'),
+            title: const Text('Registration Successful'),
+            content: const Text('You have successfully registered!'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -399,7 +414,7 @@ class _Signup_PageState extends State<Signup_Page> {
                     MaterialPageRoute(builder: (context) => const Login_Page()),
                   );
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
