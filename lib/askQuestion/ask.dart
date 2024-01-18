@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:healthy/widgets/navbar_roots.dart';
 
 class Ask extends StatelessWidget {
@@ -18,12 +17,18 @@ class Ask extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: Color.fromARGB(255, 190, 28, 28)),
-          backgroundColor: Colors.green,
-          title: const Text('Tell Us To Help You'),
+          // systemOverlayStyle: const SystemUiOverlayStyle(
+          //     statusBarColor: Color.fromARGB(255, 190, 28, 28)),
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Tell Us To Help You',
+            style: TextStyle(color: Colors.white),
+          ),
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
             onPressed: () {
               Navigator.push(
                 context,
@@ -53,37 +58,35 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
   String enteredText = '';
 
+  Future<void> sendDataToServer() async {
+    try {
+      final dio = Dio();
 
-Future<void> sendDataToServer() async {
-  try {
-    final dio = Dio();
-    
-    final response = await dio.post(
-      'http://10.0.2.2:8000/ask', // Change to your Django server endpoint
-      data: {'inputText': enteredText},
-       options: Options(
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-  ),
-    );
-    if (response.statusCode == 200) {
-      Map<String, dynamic> responseBody = json.decode(response.toString());
-      dynamic responseTextValue = responseBody["responseText"];
-  
+      final response = await dio.post(
+        'http://10.0.2.2:8000/ask', // Change to your Django server endpoint
+        data: {'inputText': enteredText},
+        options: Options(
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        ),
+      );
+      if (response.statusCode == 200) {
+        Map<String, dynamic> responseBody = json.decode(response.toString());
+        dynamic responseTextValue = responseBody["responseText"];
+
+        // ignore: avoid_print
+        print(responseTextValue.toString());
+        setState(() {
+          _responseController.text = responseTextValue.toString();
+        });
+      } else {
+        // ignore: avoid_print
+        print('Error: ${response.statusMessage}');
+      }
+    } catch (e) {
       // ignore: avoid_print
-      print(responseTextValue.toString());
-      setState(() {
-        _responseController.text = responseTextValue.toString();
-      });
-    } else {
-      // ignore: avoid_print
-      print('Error: ${response.statusMessage}');
+      print('Error sending data to server: $e');
     }
-  } catch (e) {
-    // ignore: avoid_print
-    print('Error sending data to server: $e');
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -130,37 +133,39 @@ Future<void> sendDataToServer() async {
     );
   }
 
- Widget _buildInputArea() {
-  return Padding(
-    padding: const EdgeInsets.all(16.0),
-    child: Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: _textFieldController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter your question',
+  Widget _buildInputArea() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: _textFieldController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Enter your question',
+              ),
             ),
           ),
-        ),
-        IconButton(
-          icon: isLoading ? const CircularProgressIndicator() : const Icon(Icons.send),
-          onPressed: () async {
-            setState(() {
-              enteredText = _textFieldController.text;
-              isLoading = true; // Set loading to true when sending data
-            });
-            await sendDataToServer();
-            setState(() {
-              isLoading = false; // Set loading to false when data is received
-            });
-          },
-        ),
-      ],
-    ),
-  );
-}
+          IconButton(
+            icon: isLoading
+                ? const CircularProgressIndicator()
+                : const Icon(Icons.send),
+            onPressed: () async {
+              setState(() {
+                enteredText = _textFieldController.text;
+                isLoading = true; // Set loading to true when sending data
+              });
+              await sendDataToServer();
+              setState(() {
+                isLoading = false; // Set loading to false when data is received
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   void dispose() {

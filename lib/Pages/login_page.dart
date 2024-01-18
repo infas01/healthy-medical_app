@@ -210,6 +210,7 @@ class _Login_PageState extends State<Login_Page> {
                                                         .copyWith(
                                                             labelText:
                                                                 "Password")),
+
                                             SizedBox(
                                               height: 25.0 + adjustHeight,
                                             ),
@@ -248,13 +249,14 @@ class _Login_PageState extends State<Login_Page> {
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       color:
-                                                          Colors.lightBlue[900],
+                                                          const Color.fromARGB(
+                                                              255, 0, 0, 0),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               10)),
                                                   width: deviceWidth * 0.35,
                                                   height: 40,
-                                                  child: Row(
+                                                  child: const Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .center,
@@ -279,10 +281,11 @@ class _Login_PageState extends State<Login_Page> {
                                                       //color: Colors.red,
                                                       alignment:
                                                           Alignment.centerLeft,
-                                                      margin: EdgeInsets.only(
-                                                          top: 0,
-                                                          left: 5,
-                                                          bottom: 10),
+                                                      margin:
+                                                          const EdgeInsets.only(
+                                                              top: 0,
+                                                              left: 5,
+                                                              bottom: 10),
                                                       height:
                                                           deviceHeight * 0.05,
                                                       child: Text(
@@ -298,7 +301,7 @@ class _Login_PageState extends State<Login_Page> {
                                                       ),
                                                     ),
                                                   )
-                                                : Signup_Page()
+                                                : const Signup_Page()
                                           ],
                                         ),
                                       ),
@@ -338,31 +341,33 @@ class _Login_PageState extends State<Login_Page> {
       var jdata = json.decode(response.data);
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.clear();
       prefs.setString('id', jdata["id"]);
       prefs.setString('name', jdata["name"]);
       prefs.setString('email', jdata["email"]);
+      prefs.setString('image', jdata["image"]);
+      prefs.setInt('age', jdata["age"]);
 
-      
+
       print(response.data);
 
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Login Successful'),
-            content: Text('You have successfully Login!'),
+            title: const Text('Login Successful'),
+            content: const Text('You have successfully Login!'),
             actions: [
               TextButton(
                 onPressed: () {
-
-                  Navigator.pop(context,true);
+                  Navigator.pop(context, true);
                   // Navigate to login page or perform any other action
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => NavBarRoots()),
                   );
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );
@@ -373,8 +378,8 @@ class _Login_PageState extends State<Login_Page> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('login failed'),
-            content: Text('Your Email or Password is wrong'),
+            title: const Text('login failed'),
+            content: const Text('Your Email or Password is wrong'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -384,7 +389,7 @@ class _Login_PageState extends State<Login_Page> {
                     MaterialPageRoute(builder: (context) => const Login_Page()),
                   );
                 },
-                child: Text('OK'),
+                child: const Text('OK'),
               ),
             ],
           );

@@ -57,6 +57,7 @@ class _NewEntryPageState extends State<NewEntryPage> {
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text('Add New'),
       ),
       body: Provider<NewEntryBloc>.value(
@@ -163,7 +164,7 @@ class _NewEntryPageState extends State<NewEntryPage> {
                   height: 8.h,
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: kPrimaryColor,
+                      backgroundColor: Colors.black,
                       shape: const StadiumBorder(),
                     ),
                     child: Center(
@@ -235,9 +236,6 @@ class _NewEntryPageState extends State<NewEntryPage> {
 
                       //update medicine list via global bloc
                       globalBloc.updateMedicineList(newEntryMedicine);
-
-                      //schedule notification
-                      scheduleNotification(newEntryMedicine);
 
                       Navigator.push(
                           context,
@@ -341,15 +339,14 @@ class _NewEntryPageState extends State<NewEntryPage> {
         hour = hour + (medicine.interval! * i) - 24;
       } else {
         hour = hour + (medicine.interval! * i);
-          }
-        await flutterLocalNotificationsPlugin.zonedSchedule(
+      }
+      await flutterLocalNotificationsPlugin.zonedSchedule(
         int.parse(medicine.notificationIDs![i]),
         'Reminder: ${medicine.medicineName}',
         medicine.medicineType.toString() != MedicineType.None.toString()
             ? 'It is time to take your ${medicine.medicineType!.toLowerCase()}, according to schedule'
             : 'It is time to take your medicine, according to schedule',
-        tz.TZDateTime.now(tz.local)
-            .add(Duration(hours: hour, minutes: minute)),
+        tz.TZDateTime.now(tz.local).add(Duration(hours: hour, minutes: minute)),
         const NotificationDetails(
           android: AndroidNotificationDetails(
             'your channel id',
@@ -360,8 +357,8 @@ class _NewEntryPageState extends State<NewEntryPage> {
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
-  );    
-          hour = ogValue;
+      );
+      hour = ogValue;
     }
   }
 }
@@ -405,7 +402,7 @@ class _SelectTimeState extends State<SelectTime> {
         padding: EdgeInsets.only(top: 2.h),
         child: TextButton(
           style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor, shape: const StadiumBorder()),
+              backgroundColor: Colors.black, shape: const StadiumBorder()),
           onPressed: () {
             _selectTime();
           },
@@ -458,7 +455,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                 ? Text(
                     'Select an Interval',
                     style: Theme.of(context).textTheme.caption!.copyWith(
-                          color: kPrimaryColor,
+                          color: Colors.black,
                         ),
                   )
                 : null,
@@ -596,6 +593,3 @@ class PanelTitle extends StatelessWidget {
     );
   }
 }
-
-
-

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+// ignore: camel_case_types
 class Home_Page extends StatelessWidget {
   const Home_Page({super.key});
 
@@ -26,12 +27,12 @@ class Home_Page extends StatelessWidget {
                   shaderCallback: (Rect bounds) {
                     return LinearGradient(
                       colors: [Colors.lightBlue, Colors.lightBlue[900]!],
-                      stops: [0.3, 1.0],
+                      stops: const [0.3, 1.0],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                     ).createShader(bounds);
                   },
-                  child: Text(
+                  child: const Text(
                     'Welcome to Healthy',
                     style: TextStyle(
                       fontSize: 30,
@@ -44,7 +45,7 @@ class Home_Page extends StatelessWidget {
                 ),
                 TweenAnimationBuilder(
                   tween: Tween<double>(begin: 0, end: 1),
-                  duration: Duration(seconds: 3),
+                  duration: const Duration(seconds: 3),
                   builder: (context, value, child) {
                     return Transform.scale(
                       scale: value,
@@ -52,7 +53,7 @@ class Home_Page extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(top: 20),
+                    margin: const EdgeInsets.only(top: 20),
                     child: Image.asset(
                       'images/Healthy_Logo_R.png',
                       width: 100,

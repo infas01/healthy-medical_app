@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:healthy/Pages/booking_page.dart';
+import 'package:healthy/Pages/login_page.dart';
+import 'package:healthy/Pages/settings_screen.dart';
 import 'package:healthy/askQuestion/ask.dart';
 import 'package:healthy/clinicchat/clinic_chat.dart';
 import 'package:healthy/widgets/upcoming_schedule.dart';
@@ -9,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './apointment_screen.dart';
 import '../MedReminder/medreminder.dart';
 import 'package:lottie/lottie.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SubHomePage extends StatefulWidget {
   const SubHomePage({super.key});
@@ -61,53 +64,22 @@ class _SubHomePageState extends State<SubHomePage> {
             : const CircleAvatar(
                 // Provide a default image or leave it empty as per your requirement
                 // For example, you can use AssetImage to load an image from your assets
-                backgroundImage: AssetImage('images/doctor1.png'),
+                backgroundImage: AssetImage('images/doctor1.jpg'),
               ),
-        decoration: BoxDecoration(
-          color: Colors.lightBlue[900],
+        decoration: const BoxDecoration(
+          color: Colors.black,
         ),
       ),
     );
     final drawerItems = ListView(
       children: [
         drawerHeader,
-        // Container(
-        //   color: Colors.green,
-        //   child: const Padding(
-        //     padding: EdgeInsets.fromLTRB(15, 8, 10, 8),
-        //     child: Column(
-        //       mainAxisAlignment: MainAxisAlignment.start,
-        //       crossAxisAlignment: CrossAxisAlignment.start,
-        //       children: [
-        //         Padding(
-        //           padding: EdgeInsets.only(bottom: 10.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               Text('Full Name:'),
-        //               Text('Nizam Mohamed Infas'),
-        //             ],
-        //           ),
-        //         ),
-        //         Padding(
-        //           padding: EdgeInsets.only(bottom: 10.0),
-        //           child: Column(
-        //             crossAxisAlignment: CrossAxisAlignment.start,
-        //             children: [
-        //               Text('Blood Group:'),
-        //               Text('B+'),
-        //             ],
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
         ListTile(
           title: const Text('Settings'),
           leading: const Icon(Icons.settings),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => EditProfilePage()));
           },
         ),
         ListTile(
@@ -117,13 +89,22 @@ class _SubHomePageState extends State<SubHomePage> {
             Navigator.pop(context);
           },
         ),
+
+        // Logout button
+        ListTile(
+          title: const Text('Logout'),
+          leading: const Icon(Icons.exit_to_app),
+          onTap: () {
+            _showLogoutConfirmationDialog(context);
+          },
+        ),
       ],
     );
 
     final healthImageUrls = [
-      'https://via.placeholder.com/120x120.png?text=Image+1',
-      'https://via.placeholder.com/120x120.png?text=Image+2',
-      'https://via.placeholder.com/120x120.png?text=Image+3',
+      'https://picsum.photos/id/429/4128/2322',
+      'https://picsum.photos/id/493/3872/2592',
+      'https://picsum.photos/id/755/5000/3800',
     ];
 
     final imageList = ListView.builder(
@@ -131,24 +112,28 @@ class _SubHomePageState extends State<SubHomePage> {
       itemCount: healthImageUrls.length,
       itemBuilder: (context, index) {
         return SizedBox(
-          child: Image.network(
-            healthImageUrls[index],
+          child: CachedNetworkImage(
+            imageUrl: healthImageUrls[index],
             width: _deviceWidth,
             fit: BoxFit.cover,
+            placeholder: (context, url) => const Center(
+              child: CircularProgressIndicator(),
+            ),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         );
       },
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue[900],
+        backgroundColor: Colors.black,
         title: Text(
           'Hello $name',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -196,14 +181,14 @@ class _SubHomePageState extends State<SubHomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Ask(),
+                                    builder: (context) => const Ask(),
                                   ),
                                 );
                               },
                               child: Container(
                                 width: _deviceWidth * 0.4,
-                                margin: EdgeInsets.all(10),
-                                padding: EdgeInsets.symmetric(vertical: 5),
+                                margin: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.symmetric(vertical: 5),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
@@ -215,7 +200,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                     ),
                                   ],
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -242,14 +227,14 @@ class _SubHomePageState extends State<SubHomePage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Medreminder(),
+                                    builder: (context) => const Medreminder(),
                                   ),
                                 );
                               },
                               child: Container(
                                 width: _deviceWidth * 0.4,
-                                margin: EdgeInsets.all(10),
-                                padding: EdgeInsets.symmetric(vertical: 15),
+                                margin: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.symmetric(vertical: 15),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
@@ -261,7 +246,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                     ),
                                   ],
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -319,7 +304,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                     ),
                                   ],
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -366,7 +351,7 @@ class _SubHomePageState extends State<SubHomePage> {
                                     ),
                                   ],
                                 ),
-                                child: Column(
+                                child: const Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
@@ -506,6 +491,44 @@ class _SubHomePageState extends State<SubHomePage> {
         ),
         width: 250.0,
       ),
+    );
+  }
+
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm Logout'),
+          content: const Text('Are you sure you want to logout?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                _logoutAndNavigateToLogin(context);
+              },
+              child: const Text('Logout'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _logoutAndNavigateToLogin(BuildContext context) async {
+    // Add your logout logic here, for example, clearing preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+
+    // Navigate to the login page
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const Login_Page()),
     );
   }
 }

@@ -107,7 +107,7 @@ String newStatus = '';
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ChatListView()),
+                        MaterialPageRoute(builder: (context) => const ChatListView()),
                       );
                     },
                     child: const Text(
@@ -158,7 +158,7 @@ String newStatus = '';
               padding: const EdgeInsets.all(16),
               child: Row(
                 children: <Widget>[
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 30,
                       backgroundColor: Colors.transparent,
                     backgroundImage: AssetImage('assets/image/dp.png'),

@@ -8,7 +8,7 @@ class ChatListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 17, 110, 187),
+        backgroundColor: Colors.black,
         title: const Text(
           "Clinic Centers",
           style: TextStyle(
@@ -23,7 +23,7 @@ class ChatListView extends StatelessWidget {
         toolbarHeight: 80,
         elevation: 0,
       ),
-      body: Column(
+      body: const Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
