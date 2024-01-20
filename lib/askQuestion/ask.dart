@@ -128,7 +128,7 @@ class _MyCustomFormState extends State<MyCustomForm> {
       padding: const EdgeInsets.all(16.0),
       child: Text(
         text,
-        style: const TextStyle(fontSize: 16.0),
+        style: const TextStyle(fontSize: 20.0),
       ),
     );
   }

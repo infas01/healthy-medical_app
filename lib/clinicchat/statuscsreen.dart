@@ -3,6 +3,8 @@ import './chat_list_view.dart';
 import './callscreen.dart';
 
 class StatusPage extends StatefulWidget {
+  const StatusPage({super.key});
+
   @override
   _StatusPageState createState() => _StatusPageState();
 }
